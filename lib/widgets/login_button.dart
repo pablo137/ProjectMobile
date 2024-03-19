@@ -5,12 +5,11 @@ class LoginButton extends StatelessWidget {
   final Color texto;
   final String label;
   final double? pading;
-  final void Function()? funcion;
+
   const LoginButton(
       {super.key,
       required this.fondo,
       required this.texto,
-      required this.funcion,
       required this.label,
       this.pading});
 
@@ -19,7 +18,7 @@ class LoginButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: pading ?? 0),
       child: ElevatedButton(
-        onPressed: funcion,
+        onPressed: () {},
         style: ButtonStyle(
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -28,7 +27,7 @@ class LoginButton extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: TextStyle(color: texto, fontSize: 16),
+          style: TextStyle(color: texto, fontSize: 20),
         ),
       ),
     );

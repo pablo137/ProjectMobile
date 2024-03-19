@@ -11,44 +11,55 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
+      backgroundColor: Color(0xFF004952),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: Text('Reserva con simples pasos tu cancha',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.orange[800],
-                          fontWeight: FontWeight.bold)),
-                ),
-                const SizedBox(
-                  height: 20,
+                Padding(
+                  padding: EdgeInsets.only(top: 95.0, bottom: 10.0),
+                  child: Center(
+                    child:
+                        Image(image: AssetImage('assets/images/ReservaYa.png')),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.only(bottom: 90.0),
                   child: Center(
-                    child: Text(
-                        'Lorem ipsum dolor sit amet, adipiscing elit Manec pulvinar libero pellentesque erat, id gravida  porttitor dui. Vivamus cursus sit amet risus...',
+                    child: Text('Reserva al instante, juega en grande',
                         style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.orange[600],
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
+                  child: Center(
+                    child: Text('Inicia sesión o regístrate',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 32,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         )),
                   ),
                 ),
-                const SizedBox(height: 10),
-                const SizedBox(height: 25),
-                const LoginButton(
-                    fondo: Colors.white,
-                    texto: Color(0x00001358),
-                    label: 'Iniciar Sesion',
-                    funcion: null),
+                LoginButton(
+                  fondo: Colors.white,
+                  texto: Color(0xFF004952),
+                  label: '   Iniciar Sesion con Google   ',
+                ),
+                const SizedBox(height: 20),
+                LoginButton(
+                  fondo: Colors.white,
+                  texto: Color(0xFF004952),
+                  label: ' Iniciar Sesion con Facebook ',
+                ),
               ])),
         ),
       ),
