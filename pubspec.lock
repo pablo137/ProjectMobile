@@ -75,6 +75,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  intro_slider:
+    dependency: "direct main"
+    description:
+      name: intro_slider
+      sha256: eb43fefa27b0655edebc3e7fe7ff320cb5996a4e64649d79969c7099105fe52f
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -131,6 +139,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  onboarding:
+    dependency: "direct main"
+    description:
+      name: onboarding
+      sha256: bda49643bea9cb05a5da79f3314a2042f454ca76a61235c35e8fa0b7d6ec56e8
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.2"
   path:
     dependency: transitive
     description:
@@ -210,3 +226,4 @@ packages:
     version: "13.0.0"
 sdks:
   dart: ">=3.3.1 <4.0.0"
+  flutter: ">=1.17.0"

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/carrusel_app/intro_screen_default.dart';
 
 class LoginButton extends StatelessWidget {
   final Color fondo;
@@ -18,7 +19,12 @@ class LoginButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: pading ?? 0),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const IntroScreenDefault()),
+          );
+        },
         style: ButtonStyle(
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
