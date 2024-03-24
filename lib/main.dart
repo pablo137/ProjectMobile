@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyect/pages/fields_page.dart';
 
 import 'package:proyect/pages/inicio_app/login_page.dart';
 
@@ -22,6 +23,6 @@ class MyApp extends StatelessWidget {
             //colorSchemeSeed: Colors.blue
             ),
         // home: LoginPage());
-        home: const LoginPage());
+        home: const Fields());
   }
 }

@@ -26,16 +26,19 @@ class _BottomNavState extends State<BottomNav> {
           });
         },
         elevation: 0,
+        showUnselectedLabels: true,
+        // selectedItemColor: colors.secondary,
+        unselectedItemColor: Colors.grey[350],
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.group_work_outlined),
-            activeIcon: Icon(Icons.group_work),
+            icon: const Icon(Icons.group_work_outlined),
+            activeIcon: const Icon(Icons.group_work),
             label: 'Canchas',
             backgroundColor: colors.primary,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
-            activeIcon: Icon(Icons.calendar_month),
+            icon: const Icon(Icons.calendar_month_outlined),
+            activeIcon: const Icon(Icons.calendar_month),
             label: 'Mis Reservas',
             backgroundColor: colors.primary,
           )

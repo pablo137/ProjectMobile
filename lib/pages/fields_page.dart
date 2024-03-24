@@ -72,6 +72,7 @@ class _FieldsState extends State<Fields> {
       ),
       appBar: AppBar(
         backgroundColor: colors.primary,
+        iconTheme: const IconThemeData(color: Colors.white),
         // title: const Align(
 
         //     alignment: Alignment.centerRight,
