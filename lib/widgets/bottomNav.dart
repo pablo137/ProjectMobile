@@ -16,8 +16,7 @@ class _BottomNavState extends State<BottomNav> {
     
     final colors = Theme.of(context).colorScheme;
 
-    return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
+    return BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         currentIndex: selectedIndex,
         onTap: (value) {
@@ -43,7 +42,6 @@ class _BottomNavState extends State<BottomNav> {
             backgroundColor: colors.primary,
           )
         ],
-      ),
-    );
+      );
   }
 }
