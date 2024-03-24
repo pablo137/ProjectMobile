@@ -22,6 +22,6 @@ class MyApp extends StatelessWidget {
             //colorSchemeSeed: Colors.blue
             ),
         // home: LoginPage());
-        home: LoginPage());
+        home: const LoginPage());
   }
 }

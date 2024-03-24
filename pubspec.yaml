@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  onboarding: ^4.0.2
   intro_slider: ^4.2.1
 
 
