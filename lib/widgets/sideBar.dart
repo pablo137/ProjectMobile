@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:proyect/Profile/profile_screen.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
@@ -28,7 +29,9 @@ class SideBar extends StatelessWidget {
               'Usuario',
               style: TextStyle(color: Colors.white),
             ),
-            onTap: () => {},
+            onTap: () => {
+              // Navigator.pushNamed(context, "/profile")
+            },
           ),
           ListTile(
             leading: Icon(Icons.contact_support, color: Colors.white),

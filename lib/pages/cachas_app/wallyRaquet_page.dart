@@ -1,46 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/widgets/customCard.dart';
-import 'package:proyect/widgets/bottomNav.dart';
 import 'package:proyect/widgets/customCardList.dart';
-import 'package:proyect/widgets/sideBar.dart';
 import 'package:proyect/widgets/topBar.dart';
 
-class Canchas extends StatefulWidget {
-  const Canchas({Key? key}) : super(key: key);
+class WallyRaquet extends StatelessWidget {
+  const WallyRaquet({Key? key}) : super(key: key);
 
-  @override
-  State<Canchas> createState() => _CanchasState();
-}
-
-class _CanchasState extends State<Canchas> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      drawer: const SideBar(),
-      appBar: const TopBar(),
+      appBar: TopBar(),
       body: CustomCardList(
-        title: "Canchas",
+        title: "Wally - Raquet",
         cardList: [
           CustomCard(
-            imagePath: 'assets/images/futbol8.png',
-            text: 'Futbol 8',
+            imagePath: 'assets/images/volleyball.png',
+            text: 'Cancha #1',
             textColor: Colors.white,
             onTap: () {
-              Navigator.pushNamed(context, "/futbol8");
+              // Navigator.pushNamed(context, "/futbol8");
             },
           ),
           CustomCard(
             imagePath: 'assets/images/volleyball.png',
-            text: 'Wally - Raquet',
+            text: 'Cancha #2',
             textColor: Colors.white,
             onTap: () {
-              Navigator.pushNamed(context, "/wally-raquet");
+              // Navigator.pushNamed(context, "/wally-raquet");
+            },
+          ),
+          CustomCard(
+            imagePath: 'assets/images/volleyball.png',
+            text: 'Cancha #3',
+            textColor: Colors.white,
+            onTap: () {
+              // Navigator.pushNamed(context, "/wally-raquet");
             },
           ),
           // Aquí puedes añadir más CustomCard 
         ],
       ),
-      bottomNavigationBar: const BottomNav(),
     );
   }
 }
