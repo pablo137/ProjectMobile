@@ -27,8 +27,8 @@ class _BottomNavState extends State<BottomNav> {
                 '/canchas'); // Reemplaza la pantalla actual con la nueva
             break;
           case 1:
-            // Navigator.pushReplacementNamed(context,
-            //     '/mis_reservas'); // Reemplaza la pantalla actual con la nueva
+            Navigator.pushReplacementNamed(context,
+                '/mis_reservas'); // Reemplaza la pantalla actual con la nueva
             break;
         }
       },
