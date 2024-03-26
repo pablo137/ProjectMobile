@@ -63,7 +63,8 @@ flutter:
   assets:
     - assets/images/ReservaYa.png
     - assets/images/ReservaYaHorizontal.png
-    - assets/images/volleyball.jpg
+    - assets/images/volleyball.png
+    - assets/images/futbol8.png
     - assets/carrusel_onboarding/1.png
     - assets/carrusel_onboarding/2.png
     - assets/carrusel_onboarding/3.png
