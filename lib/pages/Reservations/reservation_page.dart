@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/pages/Reservations/reservation_card.dart';
 import 'package:proyect/pages/Reservations/reservation_list.dart';
+import 'package:proyect/widgets/bottomNav.dart';
+import 'package:proyect/widgets/sideBar.dart';
 import 'package:proyect/widgets/topBar.dart';
 
 class RerservationPage extends StatefulWidget {
@@ -24,22 +26,24 @@ class _RerservationPageState extends State<RerservationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const SideBar(),
       appBar: const TopBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Text(
             'Mis reservas',
-            style: TextStyle(color: Color(0xCA004953),fontWeight: FontWeight.bold, fontSize: 30),
+            style: TextStyle(
+                color: Color(0xCA004953),
+                fontWeight: FontWeight.bold,
+                fontSize: 30),
             textAlign: TextAlign.center,
-            
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               FilterButton(
                 text: 'Todas',
-
                 onPressed: () {
                   setState(() {
                     filtro = 'Todas';
@@ -75,6 +79,7 @@ class _RerservationPageState extends State<RerservationPage> {
           ),
         ],
       ),
+      bottomNavigationBar: const BottomNav(),
     );
   }
 }
