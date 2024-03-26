@@ -10,7 +10,7 @@ class WallyRaquet extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: TopBar(),
+      appBar: const TopBar(),
       body: CustomCardList(
         title: "Wally - Raquet",
         cardList: [

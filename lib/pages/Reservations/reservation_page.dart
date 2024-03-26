@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:proyect/pages/Reservations/reservation_card.dart';
 import 'package:proyect/pages/Reservations/reservation_list.dart';
-
+import 'package:proyect/widgets/topBar.dart';
 
 class RerservationPage extends StatefulWidget {
+  const RerservationPage({super.key});
+
   @override
   _RerservationPageState createState() => _RerservationPageState();
 }
@@ -23,23 +24,16 @@ class _RerservationPageState extends State<RerservationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-          padding: EdgeInsets.only(top: 20), // Ajusta la distancia hacia abajo
-          alignment: Alignment.center, // Centra el texto horizontalmente
-          child: Text(
-            'Mis Reservas',
-            style: TextStyle(
-              color: Color(0xCA004953),
-              fontSize: 33,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+      appBar: const TopBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          const Text(
+            'Mis reservas',
+            style: TextStyle(color: Color(0xCA004953),fontWeight: FontWeight.bold, fontSize: 30),
+            textAlign: TextAlign.center,
+            
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -70,7 +64,7 @@ class _RerservationPageState extends State<RerservationPage> {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             child: ListView.builder(
               itemCount: reservasFiltradas.length,
@@ -89,25 +83,23 @@ class FilterButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
 
-  const FilterButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  const FilterButton({super.key, required this.text, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(color: Colors.white),
-      ),
       style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        backgroundColor: Color(0xCA004953),
-        
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        backgroundColor: const Color(0xCA004953),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
-          side: BorderSide(color: Color(0xCA004953)),
+          side: const BorderSide(color: Color(0xCA004953)),
         ),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }

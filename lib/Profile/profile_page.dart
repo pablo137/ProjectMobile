@@ -9,7 +9,17 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(0, 73, 83, 1),
+        backgroundColor: const Color.fromRGBO(0, 73, 83, 1),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              'assets/images/ReservaYaHorizontal.png',
+              width: 80,
+              height: 80,
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -17,15 +27,7 @@ class Profile extends StatelessWidget {
           padding: const EdgeInsets.all(tDefaultSize),
           child: Column(
             children: [
-              Text(
-                'Mi perfil',
-                style: TextStyle(
-                  color: Color.fromRGBO(0, 73, 83, 1),
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               SizedBox(
                 width: 200,
                 height: 200,
@@ -34,8 +36,8 @@ class Profile extends StatelessWidget {
                   child: Image.asset('assets/tProfileImage.png'),
                 ),
               ),
-              SizedBox(height: 50),
-              Text(
+              const SizedBox(height: 50),
+              const Text(
                 'Usuario',
                 style: TextStyle(
                   color: Color.fromRGBO(0, 73, 83, 1),
@@ -43,8 +45,8 @@ class Profile extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Correo Electronico',
                 style: TextStyle(
                   color: Color.fromRGBO(0, 73, 83, 1),
@@ -52,35 +54,34 @@ class Profile extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 200),
+              const SizedBox(height: 200),
               InkWell(
                 onTap: () {},
-                child: Text(
+                child: const Text(
                   '¿Necesitas ayuda?',
                   style: TextStyle(
-                    color:  Color.fromRGBO(0, 73, 83, 1),
+                    color: Color.fromRGBO(0, 73, 83, 1),
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     decoration: TextDecoration.underline,
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/Cerrar_sesion');
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromRGBO(2, 148, 167, 1),
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 55),
+                  backgroundColor: const Color.fromRGBO(2, 148, 167, 1),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 55),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  textStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
                 ),
-                child: Text('Cerrar Sesión'),
-              ),
+                child: const Text('Cerrar Sesión', style: TextStyle(color: Colors.white),),
+              )
             ],
           ),
         ),

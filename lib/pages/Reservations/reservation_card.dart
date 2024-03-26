@@ -4,17 +4,16 @@ import 'package:proyect/pages/Reservations/reservation_list.dart';
 class ReservationCard extends StatelessWidget {
   final Reserva reserva;
 
-  const ReservationCard(this.reserva);
+  const ReservationCard(this.reserva, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
-          side: BorderSide(
-          color: Color(0xCA004953),
-          
+          side: const BorderSide(
+            color: Color(0xCA004953),
           )),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -27,27 +26,31 @@ class ReservationCard extends StatelessWidget {
                   : reserva.estado == 'Confirmada'
                       ? 'Reserva Confirmada'
                       : '',
-              style: 
-                  TextStyle(fontWeight: FontWeight.bold, 
-                  color: Color(0xCA004953),fontSize: 18),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xCA004953),
+                  fontSize: 18),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Cancha: ${reserva.nombre}',
-                style: TextStyle(color: Color(0xCA004953),)),
+                style: const TextStyle(
+                  color: Color(0xCA004953),
+                )),
             Text(
-                'Fecha: ${DateTime.now().toString()}',
-                style: TextStyle(color: Color(0xCA004953)),
-                ), // Colocar la fecha real
-            Text('Horario: 10:00 - 12:00',
+              'Fecha: ${DateTime.now().toString()}',
+              style: const TextStyle(color: Color(0xCA004953)),
+            ), // Colocar la fecha real
+            const Text(
+              'Horario: 10:00 - 12:00',
               style: TextStyle(color: Color(0xCA004953)),
-              ), // Colocar el horario real
+            ),
             // if (reserva.estado == 'Pendiente')
-            //   FlatButton(
-            //     onPressed: () {
-            //       // Agregar lógica para cancelar la reserva
-            //     },
-            //     child: Text('Cancelar'),
-            //   ),
+            //   ElevatedButton(onPressed: (){}, 
+            //     child: const Text(
+            //       'Cancelar', 
+            //       style: TextStyle(
+            //       color: Colors.white, fontSize: 10,
+            //   ),))
           ],
         ),
       ),

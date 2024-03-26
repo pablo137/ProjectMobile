@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:proyect/Profile/profile_screen.dart';
+import 'package:proyect/Profile/profile_page.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
@@ -30,7 +30,10 @@ class SideBar extends StatelessWidget {
               style: TextStyle(color: Colors.white),
             ),
             onTap: () => {
-              // Navigator.pushNamed(context, "/profile")
+             Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Profile()),
+              )
             },
           ),
           ListTile(
