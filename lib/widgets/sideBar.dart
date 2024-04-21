@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:proyect/Profile/profile_page.dart';
 
 class SideBar extends StatelessWidget {
@@ -24,21 +23,21 @@ class SideBar extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.person_sharp, color: Colors.white),
-            title: Text(
+            leading: const Icon(Icons.person_sharp, color: Colors.white),
+            title: const Text(
               'Usuario',
               style: TextStyle(color: Colors.white),
             ),
             onTap: () => {
-             Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Profile()),
               )
             },
           ),
           ListTile(
-            leading: Icon(Icons.contact_support, color: Colors.white),
-            title: Text(
+            leading: const Icon(Icons.contact_support, color: Colors.white),
+            title: const Text(
               'Contacto',
               style: TextStyle(color: Colors.white),
             ),

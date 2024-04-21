@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/presentation/pages/Reservations/reservation_card.dart';
+import 'package:proyect/presentation/bloc/pages/Reservations/reservation_card.dart';
 import 'package:proyect/presentation/pages/Reservations/reservation_list.dart';
 import 'package:proyect/widgets/bottoms/bottomNav.dart';
 import 'package:proyect/widgets/sideBar.dart';

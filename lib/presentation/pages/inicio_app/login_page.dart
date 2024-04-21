@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/widgets/login_button.dart';
+import 'package:proyect/widgets/bottoms/login_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

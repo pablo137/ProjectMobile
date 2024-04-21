@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/widgets/customCard.dart';
-import 'package:proyect/widgets/bottomNav.dart';
+import 'package:proyect/widgets/bottoms/bottomNav.dart';
 import 'package:proyect/widgets/customCardList.dart';
 import 'package:proyect/widgets/sideBar.dart';
 import 'package:proyect/widgets/topBar.dart';
@@ -37,7 +37,7 @@ class _CanchasState extends State<Canchas> {
               Navigator.pushNamed(context, "/wally-raquet");
             },
           ),
-          // Aquí puedes añadir más CustomCard 
+          // Aquí puedes añadir más CustomCard
         ],
       ),
       bottomNavigationBar: const BottomNav(),
