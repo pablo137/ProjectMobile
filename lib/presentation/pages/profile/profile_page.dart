@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -70,7 +71,8 @@ class Profile extends StatelessWidget {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Cerrar_sesion');
+                  // Navigator.pushReplacementNamed(context, '/Cerrar_sesion');
+                  GoRouter.of(context).push(Uri(path: '/Cerrar_sesion').toString());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(2, 148, 167, 1),

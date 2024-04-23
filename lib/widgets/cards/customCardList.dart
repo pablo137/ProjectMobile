@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/widgets/customCard.dart';
+import 'package:proyect/widgets/cards/customCard.dart';
 
 class CustomCardList extends StatelessWidget {
   final List<CustomCard> cardList;

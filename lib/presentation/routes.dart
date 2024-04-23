@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:proyect/presentation/pages/Reservations/reservation_page.dart';
-import 'package:proyect/presentation/bloc/pages/courts/courts_page.dart';
-import 'package:proyect/presentation/bloc/pages/courts/futbol8_page.dart';
-import 'package:proyect/presentation/bloc/pages/courts/wallyRaquet_page.dart';
-import 'package:proyect/presentation/bloc/pages/login/login_page.dart';
-import 'package:proyect/presentation/pages/error_page.dart';
+import 'package:proyect/presentation/pages/reservations/reservation_page.dart';
+import 'package:proyect/presentation/pages/courts/courts_page.dart';
+import 'package:proyect/presentation/pages/courts/futbol8_page.dart';
+import 'package:proyect/presentation/pages/courts/wallyRaquet_page.dart';
+import 'package:proyect/presentation/pages/login/login_page.dart';
+import 'package:proyect/presentation/pages/errors/error_page.dart';
 
 // Definición de rutas
 Map<String, WidgetBuilder> routes = {

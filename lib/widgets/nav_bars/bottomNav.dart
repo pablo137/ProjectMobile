@@ -1,34 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomNav extends StatefulWidget {
-  const BottomNav({super.key});
+  final int selectedIndex; // Agregar selectedIndex como parámetro de entrada
+
+  const BottomNav({Key? key, required this.selectedIndex}) : super(key: key);
 
   @override
   State<BottomNav> createState() => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
-  int selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.shifting,
-      currentIndex: selectedIndex,
+      currentIndex: widget.selectedIndex,
       onTap: (value) {
         setState(() {
-          selectedIndex = value;
+          // selectedIndex = value;
         });
         switch (value) {
           case 0:
-            Navigator.pushReplacementNamed(context,
-                '/canchas'); // Reemplaza la pantalla actual con la nueva
+            // Navigator.pushReplacementNamed(context,
+            //     '/canchas'); // Reemplaza la pantalla actual con la nueva
+            GoRouter.of(context).push(Uri(path: '/canchas').toString());
             break;
           case 1:
-            Navigator.pushReplacementNamed(context,
-                '/mis_reservas'); // Reemplaza la pantalla actual con la nueva
+            // Navigator.pushReplacementNamed(context,
+            //     '/mis_reservas'); // Reemplaza la pantalla actual con la nueva
+            GoRouter.of(context).push(Uri(path: '/mis_reservas').toString());
             break;
         }
       },

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:proyect/widgets/customCard.dart';
-import 'package:proyect/widgets/bottoms/bottomNav.dart';
-import 'package:proyect/widgets/customCardList.dart';
-import 'package:proyect/widgets/sideBar.dart';
-import 'package:proyect/widgets/topBar.dart';
+import 'package:proyect/widgets/cards/customCard.dart';
+import 'package:proyect/widgets/nav_bars/bottomNav.dart';
+import 'package:proyect/widgets/cards/customCardList.dart';
+import 'package:proyect/widgets/nav_bars/sideBar.dart';
+import 'package:proyect/widgets/nav_bars/topBar.dart';
 
 class Courts extends StatefulWidget {
   const Courts({Key? key}) : super(key: key);
@@ -43,7 +43,7 @@ class _CourtsState extends State<Courts> {
           // Aquí puedes añadir más CustomCard
         ],
       ),
-      bottomNavigationBar: const BottomNav(),
+      bottomNavigationBar: const BottomNav(selectedIndex: 0,),
     );
   }
 }

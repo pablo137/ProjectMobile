@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/presentation/bloc/pages/profile/profile_page.dart';
+import 'package:proyect/presentation/pages/profile/profile_page.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({super.key});
