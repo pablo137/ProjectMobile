@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/presentation/pages/Reservations/reservation_list.dart';
+import 'package:proyect/presentation/pages/reservations/reservation_list.dart';
 
 class ReservationCard extends StatelessWidget {
   final Reserva reserva;

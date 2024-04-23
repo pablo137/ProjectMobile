@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/presentation/pages/Reservations/reservation_card.dart';
-import 'package:proyect/presentation/pages/Reservations/reservation_list.dart';
-import 'package:proyect/widgets/bottoms/bottomNav.dart';
-import 'package:proyect/widgets/sideBar.dart';
-import 'package:proyect/widgets/topBar.dart';
+import 'package:proyect/presentation/pages/reservations/reservation_card.dart';
+import 'package:proyect/presentation/pages/reservations/reservation_list.dart';
+import 'package:proyect/widgets/nav_bars/bottomNav.dart';
+import 'package:proyect/widgets/nav_bars/sideBar.dart';
+import 'package:proyect/widgets/nav_bars/topBar.dart';
 
 class RerservationPage extends StatefulWidget {
   const RerservationPage({super.key});
@@ -79,7 +79,7 @@ class _RerservationPageState extends State<RerservationPage> {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNav(),
+      bottomNavigationBar: const BottomNav(selectedIndex: 1,),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:proyect/presentation/bloc/pages/cachas_app/canchas_page.dart';
+import 'package:proyect/presentation/pages/courts/courts_page.dart';
 
 class IntroScreenDefault extends StatefulWidget {
   const IntroScreenDefault({super.key});
@@ -64,7 +64,7 @@ class IntroScreenDefaultState extends State<IntroScreenDefault> {
         onDonePress: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Canchas()),
+            MaterialPageRoute(builder: (context) => const Courts()),
           );
         },
         renderNextBtn: const Text("Siguiente"));

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../presentation/bloc/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
+import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
 class LoginButton extends StatelessWidget {
   final Color fondo;
