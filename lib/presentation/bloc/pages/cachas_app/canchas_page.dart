@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:proyect/widgets/customCard.dart';
 import 'package:proyect/widgets/bottoms/bottomNav.dart';
 import 'package:proyect/widgets/customCardList.dart';
@@ -26,7 +27,8 @@ class _CanchasState extends State<Canchas> {
             text: 'Futbol 8',
             textColor: Colors.white,
             onTap: () {
-              Navigator.pushNamed(context, "/futbol8");
+              // Navigator.pushNamed(context, "/futbol8");
+              GoRouter.of(context).push(Uri(path: '/futbol8').toString());
             },
           ),
           CustomCard(
@@ -34,7 +36,8 @@ class _CanchasState extends State<Canchas> {
             text: 'Wally - Raquet',
             textColor: Colors.white,
             onTap: () {
-              Navigator.pushNamed(context, "/wally-raquet");
+              // Navigator.pushNamed(context, "/wally-raquet");
+              GoRouter.of(context).push(Uri(path: '/wally-raquet').toString());
             },
           ),
           // Aquí puedes añadir más CustomCard

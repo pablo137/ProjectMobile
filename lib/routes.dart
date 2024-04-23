@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:proyect/presentation/pages/Reservations/reservation_page.dart';
 import 'package:proyect/presentation/bloc/pages/cachas_app/canchas_page.dart';
 import 'package:proyect/presentation/bloc/pages/cachas_app/futbol8_page.dart';
 import 'package:proyect/presentation/bloc/pages/cachas_app/wallyRaquet_page.dart';
 import 'package:proyect/presentation/bloc/pages/login/login_page.dart';
+import 'package:proyect/presentation/pages/error_page.dart';
 
 // Definición de rutas
 Map<String, WidgetBuilder> routes = {
@@ -18,3 +20,53 @@ Map<String, WidgetBuilder> routes = {
   // '/':(context) => HomePage(),
   // '/mis_reservas':(context) => const MisReservas(),
 };
+
+
+class NyAppRouter {
+  static GoRouter returnRouter() {
+    GoRouter router = GoRouter(
+      routes: [
+        GoRoute(
+          path: '/',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: LoginPage());
+          },
+        ),
+        GoRoute(
+          path: '/wally-raquet',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: WallyRaquet());
+          },
+        ),
+        GoRoute(
+          path: '/futbol8',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: Futbol8());
+          },
+        ),
+        GoRoute(
+          path: '/canchas',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: Canchas());
+          },
+        ),
+        GoRoute(
+          path: '/mis_reservas',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: RerservationPage());
+          },
+        ),
+        GoRoute(
+          path: '/Cerrar_sesion',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: LoginPage());
+          },
+        ),
+      ],
+      errorPageBuilder: (context, state) {
+        return const MaterialPage(child: ErrorPage());
+      },
+    );
+    return router;
+  }
+}
