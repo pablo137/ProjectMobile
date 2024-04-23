@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:proyect/presentation/pages/Reservations/reservation_page.dart';
-import 'package:proyect/presentation/bloc/pages/cachas_app/canchas_page.dart';
-import 'package:proyect/presentation/bloc/pages/cachas_app/futbol8_page.dart';
-import 'package:proyect/presentation/bloc/pages/cachas_app/wallyRaquet_page.dart';
+import 'package:proyect/presentation/bloc/pages/courts/courts_page.dart';
+import 'package:proyect/presentation/bloc/pages/courts/futbol8_page.dart';
+import 'package:proyect/presentation/bloc/pages/courts/wallyRaquet_page.dart';
 import 'package:proyect/presentation/bloc/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/error_page.dart';
 
@@ -13,7 +13,7 @@ Map<String, WidgetBuilder> routes = {
   // '/profile':(context) => const Profile(), //Profile()
   '/wally-raquet': (context) => const WallyRaquet(),
   '/futbol8': (context) => const Futbol8(),
-  '/canchas': (context) => const Canchas(),
+  '/canchas': (context) => const Courts(),
   '/mis_reservas': (context) => const RerservationPage(),
   '/Cerrar_sesion': (context) => const LoginPage(),
 
@@ -47,7 +47,7 @@ class NyAppRouter {
         GoRoute(
           path: '/canchas',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: Canchas());
+            return const MaterialPage(child: Courts());
           },
         ),
         GoRoute(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/presentation/bloc/pages/cachas_app/complements.dart';
+import 'package:proyect/presentation/bloc/pages/courts/complements.dart';
 
 class CustomCard extends StatelessWidget {
   final String imagePath;

@@ -6,14 +6,14 @@ import 'package:proyect/widgets/customCardList.dart';
 import 'package:proyect/widgets/sideBar.dart';
 import 'package:proyect/widgets/topBar.dart';
 
-class Canchas extends StatefulWidget {
-  const Canchas({Key? key}) : super(key: key);
+class Courts extends StatefulWidget {
+  const Courts({Key? key}) : super(key: key);
 
   @override
-  State<Canchas> createState() => _CanchasState();
+  State<Courts> createState() => _CourtsState();
 }
 
-class _CanchasState extends State<Canchas> {
+class _CourtsState extends State<Courts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
