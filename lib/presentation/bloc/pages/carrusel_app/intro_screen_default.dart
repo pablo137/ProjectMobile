@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:intro_slider/intro_slider.dart';
-import 'package:proyect/presentation/pages/cachas_app/canchas_page.dart';
+import 'package:proyect/presentation/bloc/pages/cachas_app/canchas_page.dart';
 
 class IntroScreenDefault extends StatefulWidget {
   const IntroScreenDefault({super.key});

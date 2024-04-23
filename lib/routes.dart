@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/presentation/pages/Reservations/reservation_page.dart';
-import 'package:proyect/presentation/pages/cachas_app/canchas_page.dart';
-import 'package:proyect/presentation/pages/cachas_app/futbol8_page.dart';
-import 'package:proyect/presentation/pages/cachas_app/wallyRaquet_page.dart';
-import 'package:proyect/presentation/pages/inicio_app/login_page.dart';
+import 'package:proyect/presentation/bloc/pages/cachas_app/canchas_page.dart';
+import 'package:proyect/presentation/bloc/pages/cachas_app/futbol8_page.dart';
+import 'package:proyect/presentation/bloc/pages/cachas_app/wallyRaquet_page.dart';
+import 'package:proyect/presentation/bloc/pages/login/login_page.dart';
 
 // Definición de rutas
 Map<String, WidgetBuilder> routes = {
