@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   texto: Color(0xFF004952),
                   label: '   Iniciar Sesion con Google   ',
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: 20),
                 LoginButton(
                   fondo: Colors.white,
                   texto: Color(0xFF004952),
