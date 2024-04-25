@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:proyect/presentation/pages/reservations/reservation_page.dart';
+import 'package:proyect/presentation/pages/my_reservations/my_reservation_page.dart';
 import 'package:proyect/presentation/pages/courts/courts_page.dart';
 import 'package:proyect/presentation/pages/courts/futbol8_page.dart';
 import 'package:proyect/presentation/pages/courts/wallyRaquet_page.dart';
@@ -14,7 +14,7 @@ Map<String, WidgetBuilder> routes = {
   '/wally-raquet': (context) => const WallyRaquet(),
   '/futbol8': (context) => const Futbol8(),
   '/canchas': (context) => const Courts(),
-  '/mis_reservas': (context) => const RerservationPage(),
+  '/mis_reservas': (context) => const MyRerservationPage(),
   '/Cerrar_sesion': (context) => const LoginPage(),
 
   // '/':(context) => HomePage(),
@@ -53,7 +53,7 @@ class NyAppRouter {
         GoRoute(
           path: '/mis_reservas',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: RerservationPage());
+            return const MaterialPage(child: MyRerservationPage());
           },
         ),
         GoRoute(

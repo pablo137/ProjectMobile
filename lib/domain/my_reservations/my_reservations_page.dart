@@ -1,4 +1,3 @@
-
 class Reserva {
   String nombre;
   String estado;
