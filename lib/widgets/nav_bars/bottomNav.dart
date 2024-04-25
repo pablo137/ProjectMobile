@@ -19,25 +19,22 @@ class _BottomNavState extends State<BottomNav> {
       type: BottomNavigationBarType.shifting,
       currentIndex: widget.selectedIndex,
       onTap: (value) {
+        if (value == widget.selectedIndex) return; // Evita la recarga si se selecciona la misma página
+
         setState(() {
           // selectedIndex = value;
         });
         switch (value) {
           case 0:
-            // Navigator.pushReplacementNamed(context,
-            //     '/canchas'); // Reemplaza la pantalla actual con la nueva
             GoRouter.of(context).push(Uri(path: '/canchas').toString());
             break;
           case 1:
-            // Navigator.pushReplacementNamed(context,
-            //     '/mis_reservas'); // Reemplaza la pantalla actual con la nueva
             GoRouter.of(context).push(Uri(path: '/mis_reservas').toString());
             break;
         }
       },
       elevation: 0,
       showUnselectedLabels: true,
-      // selectedItemColor: colors.secondary,
       unselectedItemColor: Colors.grey[350],
       items: [
         BottomNavigationBarItem(
