@@ -7,20 +7,6 @@ import 'package:proyect/presentation/pages/courts/wallyRaquet_page.dart';
 import 'package:proyect/presentation/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/errors/error_page.dart';
 
-// Definición de rutas
-Map<String, WidgetBuilder> routes = {
-  '/': (context) => const LoginPage(), //LoginPage()
-  // '/profile':(context) => const Profile(), //Profile()
-  '/wally-raquet': (context) => const WallyRaquet(),
-  '/futbol8': (context) => const Futbol8(),
-  '/canchas': (context) => const Courts(),
-  '/mis_reservas': (context) => const RerservationPage(),
-  '/Cerrar_sesion': (context) => const LoginPage(),
-
-  // '/':(context) => HomePage(),
-  // '/mis_reservas':(context) => const MisReservas(),
-};
-
 
 class NyAppRouter {
   static GoRouter returnRouter() {
