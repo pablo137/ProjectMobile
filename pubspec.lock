@@ -353,11 +353,7 @@ packages:
     source: hosted
     version: "6.1.2"
   sentry:
-<<<<<<< HEAD
     dependency: transitive
-=======
-    dependency: "direct main"
->>>>>>> 37b38bde2616150ca5f505deacfe80d846770f0e
     description:
       name: sentry
       sha256: "961630a4dba41cebd692612421fd3805a991ebd8ef4a8d84a6c179e6b89eaf22"

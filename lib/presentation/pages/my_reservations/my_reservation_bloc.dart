@@ -16,7 +16,7 @@ class MyReservationBloc extends Bloc<MyReservationEvent, MyReservationState>{
         emit(MyReservationLoading());
         try{
           final reserv = MyRerservationPage();
-          emit(MyReservationLoaded(reserv));
+          emit(MyReservationLoaded(reserv, list: []));
         }catch(err) {
           emit(MyReservationError(err.toString()));
         }

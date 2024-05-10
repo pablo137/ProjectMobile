@@ -14,7 +14,7 @@ Map<String, WidgetBuilder> routes = {
   '/wally-raquet': (context) => const WallyRaquet(),
   '/futbol8': (context) => const Futbol8(),
   '/canchas': (context) => const Courts(),
-  '/mis_reservas': (context) => const RerservationPage(),
+  '/mis_reservas': (context) => const MyRerservationPage(),
   '/Cerrar_sesion': (context) => const LoginPage(),
 
   // '/':(context) => HomePage(),
