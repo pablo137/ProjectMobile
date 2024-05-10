@@ -55,11 +55,6 @@ class _LoginPageState extends State<LoginPage> {
                   label: '   Iniciar Sesion con Google   ',
                 ),
                 SizedBox(height: 20),
-                LoginButton(
-                  fondo: Colors.white,
-                  texto: Color(0xFF004952),
-                  label: ' Iniciar Sesion con Facebook ',
-                ),
               ])),
         ),
       ),

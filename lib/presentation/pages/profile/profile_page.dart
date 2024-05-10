@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -8,6 +9,7 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(0, 73, 83, 1),
@@ -34,22 +36,26 @@ class Profile extends StatelessWidget {
                 height: 200,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: Image.asset('assets/tProfileImage.png'),
+                  child: Image.network(
+                    user?.photoURL ?? '',
+                    width: 150,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(height: 50),
-              const Text(
-                'Usuario',
-                style: TextStyle(
+              Text(
+                user?.displayName ?? "",
+                style: const TextStyle(
                   color: Color.fromRGBO(0, 73, 83, 1),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 20),
-              const Text(
-                'Correo Electronico',
-                style: TextStyle(
+              Text(
+                user?.email ?? "",
+                style: const TextStyle(
                   color: Color.fromRGBO(0, 73, 83, 1),
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -70,9 +76,13 @@ class Profile extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+
                   // Navigator.pushReplacementNamed(context, '/Cerrar_sesion');
-                  GoRouter.of(context).push(Uri(path: '/Cerrar_sesion').toString());
+                  // ignore: use_build_context_synchronously
+                  GoRouter.of(context)
+                      .push(Uri(path: '/Cerrar_sesion').toString());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(2, 148, 167, 1),
@@ -82,7 +92,10 @@ class Profile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(40),
                   ),
                 ),
-                child: const Text('Cerrar Sesión', style: TextStyle(color: Colors.white),),
+                child: const Text(
+                  'Cerrar Sesión',
+                  style: TextStyle(color: Colors.white),
+                ),
               )
             ],
           ),

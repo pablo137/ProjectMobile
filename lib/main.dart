@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/presentation/routes.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
+  //firebase conexion
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
+
   await SentryFlutter.init(
     (options) {
       options.dsn =
@@ -14,7 +23,7 @@ void main() async {
       // Setting to 1.0 will profile 100% of sampled transactions:
       options.profilesSampleRate = 1.0;
     },
-    appRunner: () => runApp(MyApp()),
+    appRunner: () => runApp(const MyApp()),
   );
   // runApp(MyApp());
   try {
@@ -30,7 +39,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
   // final _routes = routes;
   // This widget is the root of your application.
   @override
