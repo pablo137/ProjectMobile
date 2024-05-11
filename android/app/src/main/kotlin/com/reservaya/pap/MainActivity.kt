@@ -1,4 +1,4 @@
-package com.example.proyect
+package com.reservaya.pap
 
 import io.flutter.embedding.android.FlutterActivity
 
