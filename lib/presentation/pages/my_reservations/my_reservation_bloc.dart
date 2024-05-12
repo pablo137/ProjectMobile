@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
@@ -7,9 +6,7 @@ import 'package:proyect/presentation/pages/my_reservations/my_reservation_page.d
 import 'package:proyect/presentation/pages/my_reservations/my_reservation_state.dart';
 
 class MyReservationBloc extends Bloc<MyReservationEvent, MyReservationState>{
-
     // final MyReservationRepository myRepository;
-
     // MyReservationBloc(super.initialState);
     MyReservationBloc():super(MyReservationInitial()){
       on<MyReservationEvent>((event, emit)async{

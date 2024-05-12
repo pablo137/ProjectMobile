@@ -6,6 +6,7 @@ import 'package:proyect/presentation/pages/courts/futbol8_page.dart';
 import 'package:proyect/presentation/pages/courts/wallyRaquet_page.dart';
 import 'package:proyect/presentation/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/errors/error_page.dart';
+import 'package:proyect/presentation/pages/reservation/reservation_page.dart';
 
 // Definición de rutas
 Map<String, WidgetBuilder> routes = {
@@ -16,6 +17,7 @@ Map<String, WidgetBuilder> routes = {
   '/canchas': (context) => const Courts(),
   '/mis_reservas': (context) => const MyRerservationPage(),
   '/Cerrar_sesion': (context) => const LoginPage(),
+  '/reservas': (context) => const ReservationPage(),
 
   // '/':(context) => HomePage(),
   // '/mis_reservas':(context) => const MisReservas(),
@@ -60,6 +62,12 @@ class NyAppRouter {
           path: '/Cerrar_sesion',
           pageBuilder: (context, state) {
             return const MaterialPage(child: LoginPage());
+          },
+        ),
+         GoRoute(
+          path: '/reservas',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: ReservationPage());
           },
         ),
       ],
