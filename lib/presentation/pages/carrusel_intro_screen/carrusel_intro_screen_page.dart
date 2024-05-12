@@ -33,22 +33,22 @@ class IntroScreenDefaultState extends State<IntroScreenDefault> {
         backgroundColor: Color(0xCA004953),
       ),
     );
-    listContentConfig.add(
-      const ContentConfig(
-        title: "PASO 3",
-        description: "Reserva el Horario disponible",
-        pathImage: "assets/carrusel_onboarding/3.png",
-        backgroundColor: Color(0xCA004953),
-      ),
-    );
-    listContentConfig.add(
-      const ContentConfig(
-        title: "PASO 4",
-        description: "Realiza tu reserva y ¡Juega!",
-        pathImage: "assets/carrusel_onboarding/4.png",
-        backgroundColor: Color(0xCA004953),
-      ),
-    );
+    // listContentConfig.add(
+    //   const ContentConfig(
+    //     title: "PASO 3",
+    //     description: "Reserva el Horario disponible",
+    //     pathImage: "assets/carrusel_onboarding/3.png",
+    //     backgroundColor: Color(0xCA004953),
+    //   ),
+    // );
+    // listContentConfig.add(
+    //   const ContentConfig(
+    //     title: "PASO 4",
+    //     description: "Realiza tu reserva y ¡Juega!",
+    //     pathImage: "assets/carrusel_onboarding/4.png",
+    //     backgroundColor: Color(0xCA004953),
+    //   ),
+    // );
   }
 
   void onDonePress() {
