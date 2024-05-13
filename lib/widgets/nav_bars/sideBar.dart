@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:proyect/presentation/pages/profile/profile_page.dart';
 
 class SideBar extends StatelessWidget {
-  const SideBar({super.key});
+  const SideBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,29 +23,50 @@ class SideBar extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
+          // ListTile(
+          //   leading: const Icon(Icons.person_sharp, color: Colors.white),
+          //   title: const Text(
+          //     'Usuario',
+          //     style: TextStyle(color: Colors.white),
+          //   ),
+          //   onTap: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(builder: (context) => const Profile()),
+          //     );
+          //   },
+          // ),
+          // ListTile(
+          //   leading: const Icon(Icons.contact_support, color: Colors.white),
+          //   title: const Text(
+          //     'Contacto',
+          //     style: TextStyle(color: Colors.white),
+          //   ),
+          //   onTap: () {
+          //     // Implementa la lógica para la opción de Contacto aquí
+          //   },
+          // ),
           ListTile(
-            leading: const Icon(Icons.person_sharp, color: Colors.white),
+            leading: const Icon(Icons.privacy_tip, color: Colors.white),
             title: const Text(
-              'Usuario',
+              'Políticas de Privacidad',
               style: TextStyle(color: Colors.white),
             ),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Profile()),
-              )
+            onTap: () {
+              _launchURL('https://sites.google.com/view/reservaya/inicio');
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.contact_support, color: Colors.white),
-            title: const Text(
-              'Contacto',
-              style: TextStyle(color: Colors.white),
-            ),
-            onTap: () => {},
-          )
         ],
       ),
     );
+  }
+
+  // Método para abrir la URL en el navegador predeterminado del dispositivo
+  void _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url, forceWebView: false, forceSafariVC: false);
+    } else {
+      throw 'No se pudo abrir la URL: $url';
+    }
   }
 }

@@ -6,7 +6,7 @@ class CourtsBloc extends Bloc<CourtsEvent, CourtsState> {
   CourtsBloc() : super(const CourtsState(0)) {
     // Registra el controlador de eventos
     on<CourtsEvent>((event, emit) {
-      if (event == CourtsEvent.selectFutbol8) {
+      if (event == CourtsEvent.selectFutbol8 || event == CourtsEvent.navigateToCourts) {
         emit(const CourtsState(0));
       } else if (event == CourtsEvent.selectWallyRaquet) {
         emit(const CourtsState(1));

@@ -19,6 +19,7 @@ class Courts extends StatelessWidget {
       create: (_) => CourtsBloc(),
       child: BlocBuilder<CourtsBloc, CourtsState>(
         builder: (context, state) {
+          BlocProvider.of<CourtsBloc>(context).add(CourtsEvent.navigateToCourts);
           return Scaffold(
             drawer: const SideBar(),
             appBar: const TopBar(),
