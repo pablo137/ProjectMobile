@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:proyect/widgets/cards/customCard.dart';
 import 'package:proyect/widgets/cards/customCardList.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
@@ -35,7 +36,8 @@ class WallyRaquet extends StatelessWidget {
             text: 'Cancha #3',
             textColor: Colors.white,
             onTap: () {
-              // Navigator.pushNamed(context, "/wally-raquet");
+               GoRouter.of(context)
+                        .push(Uri(path: '/reservas').toString());
             },
           ),
           // Aquí puedes añadir más CustomCard 

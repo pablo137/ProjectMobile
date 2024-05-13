@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:proyect/presentation/pages/reservations/reservation_card.dart';
-import 'package:proyect/presentation/pages/reservations/reservation_list.dart';
+import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
+import 'package:proyect/presentation/pages/my_reservations/my_reservation_bloc.dart';
 import 'package:proyect/widgets/nav_bars/bottomNav.dart';
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
 
-class RerservationPage extends StatefulWidget {
-  const RerservationPage({super.key});
+class MyRerservationPage extends StatefulWidget {
+  const MyRerservationPage({super.key});
 
   @override
-  _RerservationPageState createState() => _RerservationPageState();
+  _MyRerservationPageState createState() => _MyRerservationPageState();
 }
 
-class _RerservationPageState extends State<RerservationPage> {
+class _MyRerservationPageState extends State<MyRerservationPage> {
   String filtro = 'Todas';
 
   List<Reserva> get reservasFiltradas {
