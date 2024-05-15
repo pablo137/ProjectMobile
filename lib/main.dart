@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/presentation/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
   // final _routes = routes;
   // This widget is the root of your application.
   @override
@@ -23,4 +29,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

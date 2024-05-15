@@ -23,19 +23,19 @@ class SideBar extends StatelessWidget {
               fit: BoxFit.contain,
             ),
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.person_sharp, color: Colors.white),
-          //   title: const Text(
-          //     'Usuario',
-          //     style: TextStyle(color: Colors.white),
-          //   ),
-          //   onTap: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => const Profile()),
-          //     );
-          //   },
-          // ),
+          ListTile(
+            leading: const Icon(Icons.person_sharp, color: Colors.white),
+            title: const Text(
+              'Usuario',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Profile()),
+              );
+            },
+          ),
           // ListTile(
           //   leading: const Icon(Icons.contact_support, color: Colors.white),
           //   title: const Text(

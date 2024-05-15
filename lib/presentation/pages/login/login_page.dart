@@ -36,30 +36,24 @@ class _LoginPageState extends State<LoginPage> {
                             fontWeight: FontWeight.bold)),
                   ),
                 ),
-                // Padding(
-                //   padding:
-                //       EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
-                //   child: Center(
-                //     child: Text('Inicia sesión o regístrate',
-                //         textAlign: TextAlign.center,
-                //         style: TextStyle(
-                //           fontSize: 32,
-                //           color: Colors.white,
-                //           fontWeight: FontWeight.bold,
-                //         )),
-                //   ),
-                // ),
+                Padding(
+                  padding:
+                      EdgeInsets.only(left: 30.0, right: 30.0, bottom: 30.0),
+                  child: Center(
+                    child: Text('Inicia sesión o regístrate',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 32,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ),
+                ),
                 LoginButton(
                   fondo: Colors.white,
                   texto: Color(0xFF004952),
                   label: '   Comenzar   ',
                 ),
-                SizedBox(height: 20),
-                // LoginButton(
-                //   fondo: Colors.white,
-                //   texto: Color(0xFF004952),
-                //   label: ' Iniciar Sesion con Facebook ',
-                // ),
               ])),
         ),
       ),

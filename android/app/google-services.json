@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "875148103607",
+    "project_id": "reservayamovil",
+    "storage_bucket": "reservayamovil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:875148103607:android:de7b9cd5b731a5c8fc2232",
+        "android_client_info": {
+          "package_name": "com.reservaya.pap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "875148103607-1g8olqav7pva0nck5ec8cledv9vcepie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservaya.pap",
+            "certificate_hash": "093500bf4e45ef53f7689eea9d1f9171b7734383"
+          }
+        },
+        {
+          "client_id": "875148103607-5mfat6r7gkj7km35adrjgio24qm7csra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo4m3SZwsyAnwNd3DmxJsd01v-L4adSw8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "875148103607-5mfat6r7gkj7km35adrjgio24qm7csra.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "875148103607-4v0e17vmnkhv5obe3650gjd78chtbbe7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.proyect"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
