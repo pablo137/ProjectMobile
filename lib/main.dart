@@ -4,15 +4,16 @@ import 'package:proyect/presentation/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-Future<void> _firebaseMessagingBackgroundHandler(message) async{
+Future<void> _firebaseMessagingBackgroundHandler(message) async {
   await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
 }
-void main() async{
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(MyApp());
 }
@@ -35,4 +36,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

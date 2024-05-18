@@ -49,12 +49,14 @@ class _LoginPageState extends State<LoginPage> {
                 //         )),
                 //   ),
                 // ),
+                //##########################
                 LoginButton(
                   fondo: Colors.white,
                   texto: Color(0xFF004952),
-                  label: '   Comenzar   ',
+                  label: '   Iniciar Sesion con Google   ',
                 ),
                 SizedBox(height: 20),
+                //##########################
                 // LoginButton(
                 //   fondo: Colors.white,
                 //   texto: Color(0xFF004952),
@@ -66,3 +68,23 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+  Container socialIcon(image) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 32,
+        vertical: 15,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: Colors.white,
+          width: 2,
+        ),
+      ),
+      child: Image.asset(
+        image,
+        height: 35,
+      ),
+    );
+  }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:proyect/presentation/controllers/user_controller.dart';
 import 'package:proyect/presentation/pages/my_reservations/my_reservation_page.dart';
 import 'package:proyect/presentation/pages/courts/courts_page.dart';
 import 'package:proyect/presentation/pages/courts/futbol8_page.dart';
@@ -49,7 +50,7 @@ class NyAppRouter {
         GoRoute(
           path: '/canchas',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: Courts());
+            return UserController.user == null ? const MaterialPage(child: LoginPage()) : const MaterialPage(child: Courts());
           },
         ),
         GoRoute(

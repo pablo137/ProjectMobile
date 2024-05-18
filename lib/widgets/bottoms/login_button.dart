@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:proyect/presentation/controllers/user_controller.dart';
 import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
-class LoginButton extends StatelessWidget {
+class LoginButton extends StatefulWidget {
   final Color fondo;
   final Color texto;
   final String label;
@@ -15,25 +17,46 @@ class LoginButton extends StatelessWidget {
       this.pading});
 
   @override
+  State<LoginButton> createState() => _LoginButtonState();
+}
+
+class _LoginButtonState extends State<LoginButton> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: pading ?? 0),
+      padding: EdgeInsets.only(right: widget.pading ?? 0),
       child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const IntroScreenDefault()),
-          );
+        onPressed: () async {
+          try {
+            final user = await UserController.loginWithGoogle();
+            if (user != null && mounted) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const IntroScreenDefault()),
+              );
+            }
+          } on FirebaseAuthException catch (error) {
+            print(error.message);
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+              error.message ?? "Something wrong",
+            )));
+          } catch (error) {
+            print(error);
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(error.toString())));
+          }
         },
         style: ButtonStyle(
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           )),
-          backgroundColor: MaterialStateProperty.all(fondo),
+          backgroundColor: MaterialStateProperty.all(widget.fondo),
         ),
         child: Text(
-          label,
-          style: TextStyle(color: texto, fontSize: 20),
+          widget.label,
+          style: TextStyle(color: widget.texto, fontSize: 20),
         ),
       ),
     );

@@ -73,4 +73,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'reservaya-aa832.appspot.com',
     measurementId: 'G-TT73N845R0',
   );
+
 }
