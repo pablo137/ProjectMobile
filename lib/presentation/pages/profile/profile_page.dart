@@ -1,12 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:proyect/presentation/controllers/user_controller.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
   static const double tDefaultSize = 20.0;
 
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     var user = FirebaseAuth.instance.currentUser;
@@ -27,7 +33,7 @@ class Profile extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
-          padding: const EdgeInsets.all(tDefaultSize),
+          padding: const EdgeInsets.all(Profile.tDefaultSize),
           child: Column(
             children: [
               const SizedBox(height: 30),
@@ -77,12 +83,10 @@ class Profile extends StatelessWidget {
               const SizedBox(height: 30),
               ElevatedButton(
                 onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-
-                  // Navigator.pushReplacementNamed(context, '/Cerrar_sesion');
-                  // ignore: use_build_context_synchronously
-                  GoRouter.of(context)
-                      .push(Uri(path: '/Cerrar_sesion').toString());
+                  await UserController.signOut();
+                  if (mounted) {
+                    GoRouter.of(context).push(Uri(path: '/').toString());
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromRGBO(2, 148, 167, 1),
