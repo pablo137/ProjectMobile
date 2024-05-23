@@ -14,11 +14,27 @@
       },
       "oauth_client": [
         {
+          "client_id": "5895552841-bclnf85esbsi1mji2mbha7c583shkpb7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservaya.pap",
+            "certificate_hash": "093500bf4e45ef53f7689eea9d1f9171b7734383"
+          }
+        },
+        {
           "client_id": "5895552841-egcbfcckhmnetlchhu42l9vff8jjlptf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.reservaya.pap",
             "certificate_hash": "1f50bfa65b738c4e30025f78048864fd59ce8d46"
+          }
+        },
+        {
+          "client_id": "5895552841-l05e6sbs1t5hdmb7aqr7849lij2iv5jn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservaya.pap",
+            "certificate_hash": "df2a8ba7b61098b7cec5e758e1be6843309d2ff4"
           }
         },
         {
