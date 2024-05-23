@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "5895552841-a3mbsd1jk93g8avojkugc90g4k2k603j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservaya.pap",
+            "certificate_hash": "1923c3dc44050a62a627ce7c48df28cc3435801a"
+          }
+        },
+        {
           "client_id": "5895552841-bclnf85esbsi1mji2mbha7c583shkpb7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
