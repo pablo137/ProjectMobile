@@ -46,6 +46,14 @@
           }
         },
         {
+          "client_id": "5895552841-t589mjmgn76bai0h4b67ct6sl93ibqpd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.reservaya.pap",
+            "certificate_hash": "d44d54ac203601c2eaddb75dfeb7aa6d6c6e06d3"
+          }
+        },
+        {
           "client_id": "5895552841-p5mp02nq9l3gc412ase047dtv3a6ipq5.apps.googleusercontent.com",
           "client_type": 3
         }
