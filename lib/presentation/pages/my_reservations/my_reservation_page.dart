@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:proyect/domain/my_reservations/card_screen.dart';
 import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
-import 'package:proyect/presentation/pages/my_reservations/my_reservation_bloc.dart';
+import 'package:proyect/repository/my_reservations/my_reservations_repository.dart';
 import 'package:proyect/widgets/nav_bars/bottomNav.dart';
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
 
-class MyRerservationPage extends StatefulWidget {
-  const MyRerservationPage({super.key});
+class MyReservationPage extends StatefulWidget {
+  const MyReservationPage({super.key});
 
   @override
-  _MyRerservationPageState createState() => _MyRerservationPageState();
+  _MyReservationPageState createState() => _MyReservationPageState();
 }
 
-class _MyRerservationPageState extends State<MyRerservationPage> {
+class _MyReservationPageState extends State<MyReservationPage> {
   String filtro = 'Todas';
+  late Future<List<Reserva>> _futureReservas;
 
-  List<Reserva> get reservasFiltradas {
+  @override
+  void initState() {
+    super.initState();
+    _futureReservas = MyReservationRepository().fetchReservation();
+  }
+
+  List<Reserva> filtrarReservas(List<Reserva> reservas) {
     if (filtro == 'Todas') {
       return reservas;
     } else {
@@ -70,16 +78,31 @@ class _MyRerservationPageState extends State<MyRerservationPage> {
           ),
           const SizedBox(height: 20),
           Expanded(
-            child: ListView.builder(
-              itemCount: reservasFiltradas.length,
-              itemBuilder: (context, index) {
-                return ReservationCard(reservasFiltradas[index]);
+            child: FutureBuilder<List<Reserva>>(
+              future: _futureReservas,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(child: Text('No hay reservas disponibles'));
+                }
+
+                List<Reserva> reservasFiltradas = filtrarReservas(snapshot.data!);
+
+                return ListView.builder(
+                  itemCount: reservasFiltradas.length,
+                  itemBuilder: (context, index) {
+                    return ReservationCard(reservasFiltradas[index]);
+                  },
+                );
               },
             ),
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNav(selectedIndex: 1,),
+      bottomNavigationBar: const BottomNav(selectedIndex: 1),
     );
   }
 }

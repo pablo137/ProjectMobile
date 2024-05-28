@@ -16,7 +16,7 @@ Map<String, WidgetBuilder> routes = {
   '/wally-raquet': (context) => const WallyRaquet(),
   '/futbol8': (context) => const Futbol8(),
   '/canchas': (context) => const Courts(),
-  '/mis_reservas': (context) => const MyRerservationPage(),
+  '/mis_reservas': (context) => const MyReservationPage(),
   '/Cerrar_sesion': (context) => const LoginPage(),
   '/reservas': (context) => const ReservationPage(),
 
@@ -56,7 +56,7 @@ class NyAppRouter {
         GoRoute(
           path: '/mis_reservas',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: MyRerservationPage());
+            return const MaterialPage(child: MyReservationPage());
           },
         ),
         GoRoute(
