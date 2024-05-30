@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show CalendarCarousel;
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
+    show CalendarCarousel;
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
 
@@ -47,7 +48,7 @@ class ReservationPage extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: 70, // Altura del calendario
+                  height: 80, // Altura del contenedor ajustada para una semana
                   color: Color(0xFFFFFFFF), // Color de fondo del contenedor
                   child: CalendarCarousel(
                     // Configuraciones del calendario
@@ -63,15 +64,23 @@ class ReservationPage extends StatelessWidget {
                       // Lógica para manejar la selección del día
                     },
                     showHeader: false, // Oculta el encabezado del calendario
-                    isScrollable: true, // Habilita el desplazamiento horizontal del calendario
-                    // weekFormat: false, // Muestra solo una semana
-                    height: 50, // Altura del calendario
+                    isScrollable:
+                        true, // Habilita el desplazamiento horizontal del calendario
+                    weekFormat: true, // Muestra solo una semana
+                    height:
+                        70, // Altura del calendario ajustada para una semana
                     daysHaveCircularBorder: null, // Borde circular en los días
+                    pageScrollPhysics:
+                        PageScrollPhysics(), // Hace que el desplazamiento sea por página
                   ),
                 ),
-                SizedBox(height: 20), // Espacio entre el calendario y los botones
+
+                SizedBox(
+                    height: 20), // Espacio entre el calendario y los botones
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10), // Espacio vertical entre las filas de botones
+                  padding: const EdgeInsets.symmetric(
+                      vertical:
+                          10), // Espacio vertical entre las filas de botones
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -79,53 +88,70 @@ class ReservationPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: List.generate(
                           4,
-                          (index) => SizedBox(
-                            width: 100, // Ancho del botón
-                            height: 40,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                // Lógica para manejar el botón presionado
-                              },
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(vertical: 12), // Ajuste del tamaño del botón
+                          (index) => Column(
+                            children: [
+                              SizedBox(
+                                width: 100, // Ancho del botón
+                                height: 40,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Lógica para manejar el botón presionado
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical:
+                                            12), // Ajuste del tamaño del botón
+                                  ),
+                                  child: Text('Hora ${index + 1}'),
+                                ),
                               ),
-                              child: Text('Hora ${index + 1}'),
-                            ),
-                            
+                              SizedBox(height: 8), // Separación entre botones
+                            ],
                           ),
-                  
                         ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: List.generate(
                           4,
-                          (index) => SizedBox(
-                            width: 100, // Ancho del botón
-                            height: 40,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                // Lógica para manejar el botón presionado
-                              },
-                              style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(vertical: 12), // Ajuste del tamaño del botón
+                          (index) => Column(
+                            children: [
+                              SizedBox(
+                                width: 100, // Ancho del botón
+                                height: 40,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    // Lógica para manejar el botón presionado
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical:
+                                            12), // Ajuste del tamaño del botón
+                                  ),
+                                  child: Text('Hora ${index + 5}'),
+                                ),
                               ),
-                              child: Text('Hora ${index + 5}'),
-                            ),
+                              SizedBox(height: 8), // Separación entre botones
+                            ],
                           ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20), // Espacio entre los botones y el botón "Reservar"
+                SizedBox(
+                    height:
+                        20), // Espacio entre los botones y el botón "Reservar"
                 ElevatedButton(
                   onPressed: () {
                     // Lógica para manejar el botón "Reservar" presionado
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 70), // Ajuste del tamaño del botón
-                    backgroundColor: const Color(0xCA004953), // Color de fondo del botón
+                    padding: EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 70), // Ajuste del tamaño del botón
+                    backgroundColor:
+                        const Color(0xCA004953), // Color de fondo del botón
                   ),
                   child: Text(
                     'Reservar',
@@ -157,7 +183,8 @@ class CarouselPage extends StatelessWidget {
       options: CarouselOptions(
         height: 150,
         autoPlay: true,
-        autoPlayInterval: Duration(seconds: 3), // Intervalo de reproducción automática
+        autoPlayInterval:
+            Duration(seconds: 3), // Intervalo de reproducción automática
         enableInfiniteScroll: true,
       ),
       items: imageList.map((item) {
