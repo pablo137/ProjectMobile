@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // Importa la biblioteca intl
-import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
+import 'package:proyect/domain/models/my_reservations_page.dart';
 
 class ReservationCard extends StatelessWidget {
   final Reserva reserva;

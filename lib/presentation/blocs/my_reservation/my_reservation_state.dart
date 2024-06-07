@@ -1,4 +1,4 @@
-import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
+import 'package:proyect/domain/models/my_reservations_page.dart';
 
 class MyReservationState{}
 

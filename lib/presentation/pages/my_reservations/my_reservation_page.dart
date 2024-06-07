@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proyect/domain/my_reservations/card_screen.dart';
-import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
+import 'package:proyect/domain/models/my_reservations_page.dart';
 import 'package:proyect/repository/my_reservations/my_reservations_repository.dart';
 import 'package:proyect/widgets/nav_bars/bottomNav.dart';
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
