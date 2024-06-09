@@ -18,7 +18,7 @@ Map<String, WidgetBuilder> routes = {
   '/canchas': (context) => const Courts(),
   '/mis_reservas': (context) => const MyReservationPage(),
   '/Cerrar_sesion': (context) => const LoginPage(),
-  '/reservas': (context) => const ReservationPage()//canchaName: ' '),
+  '/reservas': (context) => const ReservationPage(canchaId: '',)//canchaName: ' '),
 
   // '/':(context) => HomePage(),
   // '/mis_reservas':(context) => const MisReservas(),
@@ -68,7 +68,7 @@ class NyAppRouter {
          GoRoute(
           path: '/reservas',
           pageBuilder: (context, state) {
-            return const MaterialPage(child: ReservationPage());//canchaName: ''));//, deporteTitle: ''));
+            return const MaterialPage(child: ReservationPage(canchaId: '',));//canchaName: ''));//, deporteTitle: ''));
           },
         ),
       ],

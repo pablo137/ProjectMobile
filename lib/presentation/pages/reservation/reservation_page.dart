@@ -2,17 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show CalendarCarousel;
+import 'package:proyect/domain/models/canchas_model.dart';
 import 'package:proyect/domain/models/my_reservations.dart';
+import 'package:proyect/repository/canchas.dart';
 import 'package:proyect/repository/my_reservations/my_reservations_repository.dart';
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
 
 class ReservationPage extends StatefulWidget {
-  //final String? canchaName;
+  final String canchaId;
 
   const ReservationPage({
     Key? key,
-    //required this.canchaName,
+    required this.canchaId,
   }) : super(key: key);
 
   @override
@@ -22,26 +24,43 @@ class ReservationPage extends StatefulWidget {
 class _ReservationPageState extends State<ReservationPage> {
   late Reserva reserva;
   User? user;
-  
+  final CanchasRepository _repository = CanchasRepository();
+  Cancha? canchaSeleccionada;
+
   @override
   void initState() {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
-    reserva = Reserva(
-      cancha: 'Cancha #',
-      estado: 'Pendiente',
-      fecha: DateTime.now(),
-      hora: '',
-      deporte: 'Deporte',
-      usuarioId: user?.uid ?? '',
-      usuario: user?.displayName ?? '',
-    );
-    //print(reserva.cancha);
+    _initializeReserva();
+  }
+
+  Future<void> _initializeReserva() async {
+    canchaSeleccionada = await _obtenerCanchaSeleccionada(widget.canchaId);
+    setState(() {
+      reserva = Reserva(
+        cancha: canchaSeleccionada?.nombre ?? '',
+        estado: 'Pendiente',
+        fecha: DateTime.now(),
+        hora: '',
+        deporte: 'Deporte',
+        usuarioId: user?.uid ?? '',
+        usuario: user?.displayName ?? '',
+      );
+      print(canchaSeleccionada);
+    });
+  }
+
+  Future<Cancha?> _obtenerCanchaSeleccionada(String canchaId) async {
+    try {
+      return await _repository.obtenerCanchaPorId(canchaId);
+    } catch (e) {
+      print('Error al obtener la cancha: $e');
+      return null;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    //String hora;
     return Scaffold(
       drawer: const SideBar(),
       appBar: const TopBar(),
@@ -130,16 +149,17 @@ class _ReservationPageState extends State<ReservationPage> {
                             height: 40,
                             child: ElevatedButton(
                               onPressed: () {
-                                reserva = Reserva(
-                                  cancha: reserva.cancha,
-                                  estado: reserva.estado,
-                                  fecha: reserva.fecha,
-                                  hora: reserva.hora,
-                                  deporte: reserva.deporte,
-                                  usuarioId: reserva.usuarioId,
-                                  usuario: reserva.usuario,
-                                );
-                                // addReservation(reserva);
+                                setState(() {
+                                  reserva = Reserva(
+                                    cancha: reserva.cancha,
+                                    estado: reserva.estado,
+                                    fecha: reserva.fecha,
+                                    hora: '${index + 7 + 1}:00 AM',
+                                    deporte: reserva.deporte,
+                                    usuarioId: reserva.usuarioId,
+                                    usuario: reserva.usuario,
+                                  );
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.symmetric(vertical: 10), // Ajuste del tamaño del botón
@@ -158,16 +178,17 @@ class _ReservationPageState extends State<ReservationPage> {
                             height: 40,
                             child: ElevatedButton(
                               onPressed: () {
-                                reserva = Reserva(
-                                  cancha: reserva.cancha,
-                                  estado: reserva.estado,
-                                  fecha: reserva.fecha,
-                                  hora: reserva.hora,
-                                  deporte: reserva.deporte,
-                                  usuarioId: reserva.usuarioId,
-                                  usuario: reserva.usuario,
-                                );
-                                // addReservation(reserva);
+                                setState(() {
+                                  reserva = Reserva(
+                                    cancha: reserva.cancha,
+                                    estado: reserva.estado,
+                                    fecha: reserva.fecha,
+                                    hora: '${index + 10 + 5}:00 PM',
+                                    deporte: reserva.deporte,
+                                    usuarioId: reserva.usuarioId,
+                                    usuario: reserva.usuario,
+                                  );
+                                });
                               },
                               style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.symmetric(vertical: 10), // Ajuste del tamaño del botón
@@ -208,7 +229,6 @@ class _ReservationPageState extends State<ReservationPage> {
       ),
     );
   }
-  
 }
 
 class CarouselPage extends StatelessWidget {

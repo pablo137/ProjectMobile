@@ -61,10 +61,10 @@ class MyReservationRepository {
     }
 
     return misReservas;
-  }
-
-   
+  } 
 }
+
+
 Future<void> addReservation(Reserva reserva) async {
   final docRef = FirebaseFirestore.instance.collection('reservas').doc(); // Obtener una referencia al documento
   final docId = docRef.id; // Obtener el ID del documento
