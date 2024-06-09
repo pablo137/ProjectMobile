@@ -76,6 +76,7 @@ flutter:
     - assets/carrusel_onboarding/3.png
     - assets/carrusel_onboarding/4.png
     - assets/tProfileImage.png
+    - assets/images/croquis.jpeg
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 flutter_launcher_icons:

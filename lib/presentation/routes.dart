@@ -8,6 +8,7 @@ import 'package:proyect/presentation/pages/courts/wallyRaquet_page.dart';
 import 'package:proyect/presentation/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/errors/error_page.dart';
 import 'package:proyect/presentation/pages/reservation/reservation_page.dart';
+import 'package:proyect/presentation/pages/sketch/sketch_page.dart';
 
 // Definición de rutas
 Map<String, WidgetBuilder> routes = {
@@ -63,6 +64,12 @@ class NyAppRouter {
           path: '/Cerrar_sesion',
           pageBuilder: (context, state) {
             return const MaterialPage(child: LoginPage());
+          },
+        ),
+        GoRoute(
+          path: '/croquis',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: SketchPage());
           },
         ),
          GoRoute(

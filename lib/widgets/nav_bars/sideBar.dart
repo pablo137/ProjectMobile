@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:proyect/presentation/controllers/user_controller.dart';
+import 'package:proyect/presentation/pages/sketch/sketch_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:proyect/presentation/pages/profile/profile_page.dart';
 
@@ -43,16 +44,16 @@ class _SideBarState extends State<SideBar> {
               );
             },
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.contact_support, color: Colors.white),
-          //   title: const Text(
-          //     'Contacto',
-          //     style: TextStyle(color: Colors.white),
-          //   ),
-          //   onTap: () {
-          //     // Implementa la lógica para la opción de Contacto aquí
-          //   },
-          // ),
+          ListTile(
+            leading: const Icon(Icons.map, color: Colors.white),
+            title: const Text(
+              'Croquis',
+              style: TextStyle(color: Colors.white),
+            ),
+            onTap: () {
+              GoRouter.of(context).push('/croquis');
+            },
+          ),
           ListTile(
             leading: const Icon(Icons.privacy_tip, color: Colors.white),
             title: const Text(
@@ -83,9 +84,11 @@ class _SideBarState extends State<SideBar> {
 
   // Método para abrir la URL en el navegador predeterminado del dispositivo
   void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: false, forceSafariVC: false);
-    } else {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
       throw 'No se pudo abrir la URL: $url';
     }
   }
