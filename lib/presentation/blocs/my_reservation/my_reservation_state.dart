@@ -1,4 +1,5 @@
-import 'package:proyect/domain/models/my_reservations_page.dart';
+
+import 'package:proyect/domain/models/my_reservations.dart';
 
 class MyReservationState{}
 
@@ -10,7 +11,7 @@ class MyReservationLoaded extends MyReservationState{
   List<Reserva> list;
   MyReservationLoaded({required this.list});
 
-  @override
+  //@override
   List<Object> get props => [list];
 }
 
@@ -19,6 +20,6 @@ class MyReservationError extends MyReservationState {
   late String errorMessage;
   MyReservationError(this.errorMessage);
 
-  @override
+  //@override
   List<Object> get props => [errorMessage];
 }

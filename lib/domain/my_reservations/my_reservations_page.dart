@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // Importa la biblioteca intl
-import 'package:proyect/domain/models/my_reservations_page.dart';
+import 'package:intl/intl.dart';
+import 'package:proyect/domain/models/my_reservations.dart';
+//import 'package:proyect/repository/my_reservations/my_reservations_repository.dart'; 
 
 class ReservationCard extends StatelessWidget {
   final Reserva reserva;
-
   const ReservationCard(this.reserva, {Key? key}) : super(key: key);
 
   @override
@@ -12,9 +12,10 @@ class ReservationCard extends StatelessWidget {
     // Formatear la fecha
     String formattedDate = DateFormat('yyyy-MM-dd').format(reserva.fecha);
     // Formatear la hora en formato de 12 horas (AM/PM)
-    String formattedTime = DateFormat('hh:mm a').format(reserva.fecha);
+    String formattedTime = DateFormat('hh:mm a').format(reserva.fecha); 
 
     return Card(
+      
       margin: const EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -37,6 +38,7 @@ class ReservationCard extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: Color(0xCA004953),
                 fontSize: 18,
+               
               ),
             ),
             Text(
@@ -56,6 +58,7 @@ class ReservationCard extends StatelessWidget {
           ],
         ),
       ),
+      
     );
   }
 }

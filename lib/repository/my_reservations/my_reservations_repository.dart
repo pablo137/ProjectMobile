@@ -33,14 +33,20 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:proyect/domain/models/my_reservations_page.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:proyect/domain/models/my_reservations.dart';
 
 class MyReservationRepository {
+  FirebaseFirestore _db = FirebaseFirestore.instance;
+  //final FirebaseAuth _auth = FirebaseAuth.instance;
+
   Future<List<Reserva>> fetchReservation() async {
-    FirebaseFirestore db = FirebaseFirestore.instance;
+   
     List<Reserva> misReservas = [];
     // Referencia a la colección
-    CollectionReference collectionReferenceReserva = db.collection('mis_reservas');
+
+    //final FirebaseFirestore _db = FirebaseFirestore.instance;
+    CollectionReference collectionReferenceReserva = _db.collection('reservas');
 
     try {
       // Obtener documentos de la colección
@@ -56,4 +62,15 @@ class MyReservationRepository {
 
     return misReservas;
   }
+
+   
+}
+Future<void> addReservation(Reserva reserva) async {
+  final docRef = FirebaseFirestore.instance.collection('reservas').doc(); // Obtener una referencia al documento
+  final docId = docRef.id; // Obtener el ID del documento
+
+  // Crear un nuevo mapa con el ID del documento
+  final data = reserva.toMap()..addAll({'docId': docId});
+
+  await docRef.set(data); // Guardar los datos en el documento
 }

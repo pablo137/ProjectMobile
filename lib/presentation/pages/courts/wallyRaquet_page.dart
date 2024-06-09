@@ -7,9 +7,10 @@ import 'package:proyect/widgets/nav_bars/topBar.dart';
 class WallyRaquet extends StatelessWidget {
   const WallyRaquet({Key? key}) : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: const TopBar(),
       body: CustomCardList(
@@ -20,7 +21,8 @@ class WallyRaquet extends StatelessWidget {
             text: 'Cancha #1',
             textColor: Colors.white,
             onTap: () {
-              // Navigator.pushNamed(context, "/futbol8");
+               GoRouter.of(context)
+                  .push('/reservas');   //Coleccion de firebase...
             },
           ),
           CustomCard(
@@ -28,7 +30,8 @@ class WallyRaquet extends StatelessWidget {
             text: 'Cancha #2',
             textColor: Colors.white,
             onTap: () {
-              // Navigator.pushNamed(context, "/wally-raquet");
+              GoRouter.of(context)
+                  .push('/reservas');
             },
           ),
           CustomCard(
@@ -36,11 +39,10 @@ class WallyRaquet extends StatelessWidget {
             text: 'Cancha #3',
             textColor: Colors.white,
             onTap: () {
-               GoRouter.of(context)
-                        .push(Uri(path: '/reservas').toString());
+              GoRouter.of(context)
+                  .push('/reservas');
             },
           ),
-          // Aquí puedes añadir más CustomCard 
         ],
       ),
     );

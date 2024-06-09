@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:proyect/domain/models/my_reservations_page.dart';
+import 'package:proyect/domain/models/my_reservations.dart';
 import 'package:proyect/presentation/blocs/my_reservation/my_reservation_event.dart';
 import 'package:proyect/presentation/blocs/my_reservation/my_reservation_state.dart';
 import 'package:proyect/repository/my_reservations/my_reservations_repository.dart';
