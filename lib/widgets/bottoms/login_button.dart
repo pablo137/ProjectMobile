@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:proyect/presentation/controllers/user_controller.dart';
 import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
@@ -30,11 +31,12 @@ class _LoginButtonState extends State<LoginButton> {
           try {
             final user = await UserController.loginWithGoogle();
             if (user != null && mounted) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const IntroScreenDefault()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) => const IntroScreenDefault()),
+              // );
+              GoRouter.of(context).push('/intro_default');
             }
           } on FirebaseAuthException catch (error) {
             print(error.message);

@@ -9,6 +9,7 @@ import 'package:proyect/presentation/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/errors/error_page.dart';
 import 'package:proyect/presentation/pages/reservation/reservation_page.dart';
 import 'package:proyect/presentation/pages/sketch/sketch_page.dart';
+import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
 // Definición de rutas
 Map<String, WidgetBuilder> routes = {
@@ -70,6 +71,12 @@ class NyAppRouter {
           path: '/croquis',
           pageBuilder: (context, state) {
             return const MaterialPage(child: SketchPage());
+          },
+        ),
+        GoRoute(
+          path: '/intro_default',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: IntroScreenDefault());
           },
         ),
          GoRoute(
