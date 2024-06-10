@@ -74,6 +74,14 @@ class _MyReservationPageState extends State<MyReservationPage> {
                   });
                 },
               ),
+              FilterButton(
+                text: 'Rechazadas',
+                onPressed: () {
+                  setState(() {
+                    filtro = 'Rechazada';
+                  });
+                },
+              ),
             ],
           ),
           const SizedBox(height: 20),

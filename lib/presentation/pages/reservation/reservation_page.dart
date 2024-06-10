@@ -420,10 +420,12 @@ class ReservationPage extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           context.read<ReservationBloc>().add(ConfirmReservation());
+                          //ButtonStyle color = ButtonStyle(animationDuration: const Duration(milliseconds:2));
                         },
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           backgroundColor: const Color(0xCA004953),
+                         
                         ),
                         child: const Text(
                           'Reservar',
@@ -431,6 +433,7 @@ class ReservationPage extends StatelessWidget {
                             fontSize: 20,
                             color: Colors.white,
                           ),
+                          
                         ),
                       ),
                     );
@@ -467,7 +470,7 @@ class ReservationPage extends StatelessWidget {
   }
 
   Widget buildReservationConfirmed(BuildContext context, Reserva reserva) {
-    Future.delayed(const Duration(seconds: 10), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pop();
     });
     return Center(
