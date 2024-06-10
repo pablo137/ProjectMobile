@@ -19,7 +19,8 @@ class Courts extends StatelessWidget {
       create: (_) => CourtsBloc(),
       child: BlocBuilder<CourtsBloc, CourtsState>(
         builder: (context, state) {
-          BlocProvider.of<CourtsBloc>(context).add(CourtsEvent.navigateToCourts);
+          BlocProvider.of<CourtsBloc>(context)
+              .add(CourtsEvent.navigateToCourts);
           return Scaffold(
             drawer: const SideBar(),
             appBar: const TopBar(),
@@ -27,18 +28,17 @@ class Courts extends StatelessWidget {
               title: "Canchas",
               cardList: [
                 CustomCard(
-                  imagePath: 'assets/images/futbol8.png',
+                  imagePath: 'assets/images/futbol (1).png',
                   text: 'Futbol 8',
                   textColor: Colors.white,
                   onTap: () {
                     BlocProvider.of<CourtsBloc>(context)
                         .add(CourtsEvent.selectFutbol8);
-                    GoRouter.of(context)
-                        .push(Uri(path: '/futbol8').toString());
+                    GoRouter.of(context).push(Uri(path: '/futbol8').toString());
                   },
                 ),
                 CustomCard(
-                  imagePath: 'assets/images/volleyball.png',
+                  imagePath: 'assets/images/wally (4).png',
                   text: 'Wally - Raquet',
                   textColor: Colors.white,
                   onTap: () {

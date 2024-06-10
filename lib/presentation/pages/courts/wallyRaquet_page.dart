@@ -15,27 +15,30 @@ class WallyRaquet extends StatelessWidget {
         title: "Wally - Raquet",
         cardList: [
           CustomCard(
-            imagePath: 'assets/images/volleyball.png',
+            imagePath: 'assets/images/wally (1).png',
             text: 'Cancha #1',
             textColor: Colors.white,
             onTap: () {
-              GoRouter.of(context).push(Uri.encodeFull('/reservas/1-Wally-Raquet'));
+              GoRouter.of(context)
+                  .push(Uri.encodeFull('/reservas/1-Wally-Raquet'));
             },
           ),
           CustomCard(
-            imagePath: 'assets/images/volleyball.png',
+            imagePath: 'assets/images/wally (2).png',
             text: 'Cancha #2',
             textColor: Colors.white,
             onTap: () {
-              GoRouter.of(context).push(Uri.encodeFull('/reservas/2-Wally-Raquet'));
+              GoRouter.of(context)
+                  .push(Uri.encodeFull('/reservas/2-Wally-Raquet'));
             },
           ),
           CustomCard(
-            imagePath: 'assets/images/volleyball.png',
+            imagePath: 'assets/images/wally (3).png',
             text: 'Cancha #3',
             textColor: Colors.white,
             onTap: () {
-              GoRouter.of(context).push(Uri.encodeFull('/reservas/3-Wally-Raquet'));
+              GoRouter.of(context)
+                  .push(Uri.encodeFull('/reservas/3-Wally-Raquet'));
             },
           ),
         ],

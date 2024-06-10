@@ -67,7 +67,7 @@ class _SideBarState extends State<SideBar> {
           ListTile(
             leading: const Icon(Icons.logout, color: Colors.white),
             title: const Text(
-              'Salir',
+              'Cerrar Sesión',
               style: TextStyle(color: Colors.white),
             ),
             onTap: () async {
