@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:proyect/presentation/controllers/user_controller.dart';
 import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
@@ -9,12 +11,13 @@ class LoginButton extends StatefulWidget {
   final String label;
   final double? pading;
 
-  const LoginButton(
-      {super.key,
-      required this.fondo,
-      required this.texto,
-      required this.label,
-      this.pading});
+  const LoginButton({
+    super.key,
+    required this.fondo,
+    required this.texto,
+    required this.label,
+    this.pading,
+  });
 
   @override
   State<LoginButton> createState() => _LoginButtonState();
@@ -30,22 +33,27 @@ class _LoginButtonState extends State<LoginButton> {
           try {
             final user = await UserController.loginWithGoogle();
             if (user != null && mounted) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const IntroScreenDefault()),
-              );
+              final prefs = await SharedPreferences.getInstance();
+              final isFirstTime = prefs.getBool('isFirstTime') ?? true;
+              if (isFirstTime) {
+                await prefs.setBool('isFirstTime', false);
+                GoRouter.of(context).push('/intro_default');
+              } else {
+                GoRouter.of(context).push('/canchas');
+              }
             }
           } on FirebaseAuthException catch (error) {
             print(error.message);
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text(
-              error.message ?? "Something wrong",
-            )));
+              content: Text(
+                error.message ?? "Something went wrong",
+              ),
+            ));
           } catch (error) {
             print(error);
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(error.toString())));
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(error.toString()),
+            ));
           }
         },
         style: ButtonStyle(

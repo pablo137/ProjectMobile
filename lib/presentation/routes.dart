@@ -10,6 +10,8 @@ import 'package:proyect/presentation/pages/courts/wallyRaquet_page.dart';
 import 'package:proyect/presentation/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/errors/error_page.dart';
 import 'package:proyect/presentation/pages/reservation/reservation_page.dart';
+import 'package:proyect/presentation/pages/sketch/sketch_page.dart';
+import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
 class NyAppRouter {
   static GoRouter returnRouter() {
@@ -36,19 +38,15 @@ class NyAppRouter {
         GoRoute(
           path: '/canchas',
           pageBuilder: (context, state) {
-            return UserController.user == null ? const MaterialPage(child: LoginPage()) : const MaterialPage(child: Courts());
+            return UserController.user == null
+                ? const MaterialPage(child: LoginPage())
+                : const MaterialPage(child: Courts());
           },
         ),
         GoRoute(
           path: '/mis_reservas',
           pageBuilder: (context, state) {
             return const MaterialPage(child: MyReservationPage());
-          },
-        ),
-        GoRoute(
-          path: '/Cerrar_sesion',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: LoginPage());
           },
         ),
         // GoRoute(
@@ -66,6 +64,24 @@ class NyAppRouter {
               create: (context) => ReservationBloc(),
               child: ReservationPage(cancha: cancha),
             );
+          },
+        ),
+        GoRoute(
+          path: '/croquis',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: SketchPage());
+          },
+        ),
+        GoRoute(
+          path: '/intro_default',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: IntroScreenDefault());
+          },
+        ),
+        GoRoute(
+          path: '/Cerrar_sesion',
+          pageBuilder: (context, state) {
+            return const MaterialPage(child: LoginPage());
           },
         ),
       ],
