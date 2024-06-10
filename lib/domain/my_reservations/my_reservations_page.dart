@@ -32,7 +32,10 @@ class ReservationCard extends StatelessWidget {
                   ? 'Reserva Pendiente'
                   : reserva.estado == 'Confirmada'
                       ? 'Reserva Confirmada'
+                      : reserva.estado == 'Rechazada'
+                      ? 'Reserva Rechazada'
                       : '',
+
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Color(0xCA004953),
