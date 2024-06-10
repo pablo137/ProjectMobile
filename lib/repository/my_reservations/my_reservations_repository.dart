@@ -46,7 +46,7 @@ class MyReservationRepository {
     // Referencia a la colección
 
     //final FirebaseFirestore _db = FirebaseFirestore.instance;
-    CollectionReference collectionReferenceReserva = _db.collection('reservas_ca');
+    CollectionReference collectionReferenceReserva = _db.collection('reservas');
 
     try {
       // Obtener documentos de la colección
@@ -62,15 +62,25 @@ class MyReservationRepository {
 
     return misReservas;
   } 
+  Future<void> addReservation(Reserva reserva) async {
+    CollectionReference collectionReferenceReserva = _db.collection('reservas');
+
+    try {
+      await collectionReferenceReserva.add(reserva.toMap());
+    } catch (e) {
+      throw Exception('Failed to add reservation: $e');
+    }
+  }
 }
 
 
-Future<void> addReservation(Reserva reserva) async {
-  final docRef = FirebaseFirestore.instance.collection('reservas').doc(); // Obtener una referencia al documento
-  final docId = docRef.id; // Obtener el ID del documento
 
-  // Crear un nuevo mapa con el ID del documento
-  final data = reserva.toMap()..addAll({'docId': docId});
+// Future<void> addReservation(Reserva reserva) async {
+//   final docRef = FirebaseFirestore.instance.collection('reservas').doc(); // Obtener una referencia al documento
+//   final docId = docRef.id; // Obtener el ID del documento
 
-  await docRef.set(data); // Guardar los datos en el documento
-}
+//   // Crear un nuevo mapa con el ID del documento
+//   final data = reserva.toMap()..addAll({'docId': docId});
+
+//   await docRef.set(data); // Guardar los datos en el documento
+// }
