@@ -14,6 +14,8 @@ import 'package:proyect/presentation/pages/sketch/sketch_page.dart';
 import '../../presentation/pages/carrusel_intro_screen/carrusel_intro_screen_page.dart';
 
 class NyAppRouter {
+  static get reservationRepository => null;
+
   static GoRouter returnRouter() {
     GoRouter router = GoRouter(
       routes: [
@@ -61,7 +63,7 @@ class NyAppRouter {
           builder: (context, state) {
             final cancha = state.pathParameters['cancha']!;
             return BlocProvider(
-              create: (context) => ReservationBloc(),
+              create: (context) => ReservationBloc(reservationRepository: reservationRepository),
               child: ReservationPage(cancha: cancha),
             );
           },

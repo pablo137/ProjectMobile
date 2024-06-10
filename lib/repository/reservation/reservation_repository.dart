@@ -2,12 +2,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:proyect/domain/models/my_reservations.dart';
 
-class MyReservationRepository {
+class ReservationRepository {
   Future<List<Reserva>> fetchReservation() async {
     FirebaseFirestore db = FirebaseFirestore.instance;
     List<Reserva> misReservas = [];
     // Referencia a la colección
-    CollectionReference collectionReferenceReserva = db.collection('mis_reservas');
+    CollectionReference collectionReferenceReserva = db.collection('reservas');
 
     try {
       // Obtener documentos de la colección

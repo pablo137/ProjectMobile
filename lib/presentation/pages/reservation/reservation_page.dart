@@ -267,6 +267,7 @@ import 'package:proyect/data/reservation_state.dart';
 import 'package:proyect/domain/models/my_reservations.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:proyect/repository/my_reservations/my_reservations_repository.dart';
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
 
@@ -280,19 +281,24 @@ class ReservationPage extends StatelessWidget {
     return Scaffold(
       drawer: const SideBar(),
       appBar: const TopBar(),
-      body: BlocBuilder<ReservationBloc, ReservationState>(
-        builder: (context, state) {
-          if (state is ReservationInitial) {
-            context.read<ReservationBloc>().add(InitializeReservation(cancha));
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is ReservationPending) {
-            return buildReservationPending(context, state.reserva);
-          } else if (state is ReservationConfirmed) {
-            return buildReservationConfirmed(state.reserva);
-          } else {
-            return const Center(child: Text('Unknown state'));
-          }
-        },
+      body: BlocProvider(
+        create: (context) => ReservationBloc(
+          reservationRepository: MyReservationRepository(),
+        ),
+        child: BlocBuilder<ReservationBloc, ReservationState>(
+          builder: (context, state) {
+            if (state is ReservationInitial) {
+              context.read<ReservationBloc>().add(InitializeReservation(cancha));
+              return const Center(child: CircularProgressIndicator());
+            } else if (state is ReservationPending) {
+              return buildReservationPending(context, state.reserva);
+            } else if (state is ReservationConfirmed) {
+              return buildReservationConfirmed(context, state.reserva);
+            } else {
+              return const Center(child: Text('Unknown state'));
+            }
+          },
+        ),
       ),
     );
   }
@@ -345,7 +351,9 @@ class ReservationPage extends StatelessWidget {
                   selectedDayButtonColor: Colors.green,
                   selectedDateTime: reserva.fecha,
                   onDayPressed: (DateTime selectedDay, List<dynamic> events) {
-                    context.read<ReservationBloc>().add(UpdateReservationDate(selectedDay));
+                    if (!context.read<ReservationBloc>().confirmedReservations.any((reserva) => reserva.fecha == selectedDay)) {
+                      context.read<ReservationBloc>().add(UpdateReservationDate(selectedDay));
+                    }
                   },
                   showHeader: false,
                   isScrollable: true,
@@ -427,13 +435,22 @@ class ReservationPage extends StatelessWidget {
                       ),
                     );
                   } else if (state is ReservationConfirmed) {
-                    return const Center(
-                      child: Text(
-                        'Reservación Confirmada',
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Color(0xCA004953),
-                          fontWeight: FontWeight.bold,
+                    return AnimatedContainer(
+                      duration: const Duration(milliseconds: 300),
+                      width: 150,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: null,
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          backgroundColor: Colors.grey, // Change color to grey for disabled state
+                        ),
+                        child: const Text(
+                          'Reserva Confirmada',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     );
@@ -449,15 +466,29 @@ class ReservationPage extends StatelessWidget {
     );
   }
 
-  Widget buildReservationConfirmed(Reserva reserva) {
+  Widget buildReservationConfirmed(BuildContext context, Reserva reserva) {
+    Future.delayed(const Duration(seconds: 10), () {
+      Navigator.of(context).pop();
+    });
     return Center(
-      child: Text(
-        'Reservación Pendiente\n\nCancha: ${reserva.cancha}\nFecha: ${reserva.fecha}\nHora: ${reserva.hora}',
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Color(0xCA004953),
+      child: AlertDialog(
+        content: SizedBox(
+          width: 100,
+          height: 100,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              const SizedBox(height: 20),
+              const Text(
+                'Enviando respuesta...',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

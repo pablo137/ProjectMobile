@@ -1,3 +1,4 @@
+import 'package:proyect/domain/models/my_reservations.dart';
 
 abstract class ReservationEvent   {
   const ReservationEvent();
@@ -8,11 +9,13 @@ abstract class ReservationEvent   {
 
 class InitializeReservation extends ReservationEvent {
   final String cancha;
+  // final String usuarioId;
+  // final String usuario;
 
   const InitializeReservation(this.cancha);
 
   @override
-  List<Object> get props => [cancha];
+  List<Object> get props => [cancha]; //, usuarioId, usuario];
 }
 
 class UpdateReservationDate extends ReservationEvent {
@@ -33,4 +36,7 @@ class UpdateReservationTime extends ReservationEvent {
   List<Object> get props => [hora];
 }
 
-class ConfirmReservation extends ReservationEvent {}
+class ConfirmReservation extends ReservationEvent {
+  const ConfirmReservation();
+  
+}
