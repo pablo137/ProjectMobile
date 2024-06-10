@@ -49,7 +49,6 @@ class Reserva {
   final String estado;
   final DateTime fecha;
   final String hora;
-  final String deporte;
   final String usuarioId;
   final String usuario;
 
@@ -58,7 +57,6 @@ class Reserva {
     required this.estado,
     required this.fecha,
     required this.hora, // change this to
-    required this.deporte,
     required this.usuarioId,
     required this.usuario,
   });
@@ -69,7 +67,6 @@ class Reserva {
       estado: data['Estado'] ?? '',
       fecha: (data['Fecha'] as Timestamp).toDate(),
       hora: data['hora'] ?? '',
-      deporte: data['Deporte'] ?? '',
       usuarioId: data['UsuarioId'] ?? '',
       usuario: data['Usuario'] ?? '',
     );
@@ -81,7 +78,6 @@ class Reserva {
       'Estado': estado,
       'Fecha': Timestamp.fromDate(fecha),
       'hora': hora,
-      'Deporte': deporte,
       'UsuarioId': usuarioId,
       'Usuario': usuario,
     };

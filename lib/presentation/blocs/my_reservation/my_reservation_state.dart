@@ -1,4 +1,3 @@
-
 import 'package:proyect/domain/models/my_reservations.dart';
 
 class MyReservationState{}

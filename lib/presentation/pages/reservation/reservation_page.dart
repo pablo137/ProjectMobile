@@ -1,20 +1,18 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show CalendarCarousel;
-import 'package:proyect/domain/models/canchas_model.dart';
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:proyect/domain/models/my_reservations.dart';
-import 'package:proyect/repository/canchas.dart';
 import 'package:proyect/repository/my_reservations/my_reservations_repository.dart';
 import 'package:proyect/widgets/nav_bars/sideBar.dart';
 import 'package:proyect/widgets/nav_bars/topBar.dart';
 
 class ReservationPage extends StatefulWidget {
-  final String canchaId;
+  final String cancha;
 
   const ReservationPage({
     Key? key,
-    required this.canchaId,
+    required this.cancha,
   }) : super(key: key);
 
   @override
@@ -24,8 +22,7 @@ class ReservationPage extends StatefulWidget {
 class _ReservationPageState extends State<ReservationPage> {
   late Reserva reserva;
   User? user;
-  final CanchasRepository _repository = CanchasRepository();
-  Cancha? canchaSeleccionada;
+  bool _isReserving = false;
 
   @override
   void initState() {
@@ -35,28 +32,28 @@ class _ReservationPageState extends State<ReservationPage> {
   }
 
   Future<void> _initializeReserva() async {
-    canchaSeleccionada = await _obtenerCanchaSeleccionada(widget.canchaId);
     setState(() {
       reserva = Reserva(
-        cancha: canchaSeleccionada?.nombre ?? '',
+        cancha: widget.cancha,
         estado: 'Pendiente',
         fecha: DateTime.now(),
         hora: '',
-        deporte: 'Deporte',
         usuarioId: user?.uid ?? '',
         usuario: user?.displayName ?? '',
       );
-      print(canchaSeleccionada);
     });
   }
 
-  Future<Cancha?> _obtenerCanchaSeleccionada(String canchaId) async {
-    try {
-      return await _repository.obtenerCanchaPorId(canchaId);
-    } catch (e) {
-      print('Error al obtener la cancha: $e');
-      return null;
-    }
+  void _onReservePressed() {
+    setState(() {
+      _isReserving = true;
+    });
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        _isReserving = false;
+      });
+      addReservation(reserva);
+    });
   }
 
   @override
@@ -67,15 +64,15 @@ class _ReservationPageState extends State<ReservationPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(15.0),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
             child: Text(
-              'Reservación de Wally',
+              'Reservación de ${widget.cancha}',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0xCA004953), // Color de texto
+                color: Color(0xCA004953),
               ),
             ),
           ),
@@ -91,7 +88,7 @@ class _ReservationPageState extends State<ReservationPage> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: Color(0xCA004953), // Color de texto
+                color: Color(0xCA004953),
               ),
             ),
           ),
@@ -99,44 +96,39 @@ class _ReservationPageState extends State<ReservationPage> {
             child: Column(
               children: [
                 Container(
-                  height: 85, // Altura del calendario
-                  color: Color(0xFFFFFFFF), // Color de fondo del contenedor
+                  height: 85,
+                  color: const Color(0xFFFFFFFF),
                   child: CalendarCarousel(
-                    // Configuraciones del calendario
                     todayBorderColor: Colors.green,
                     todayButtonColor: Colors.green,
-                    weekendTextStyle: TextStyle(color: Colors.black),
-                    weekdayTextStyle: TextStyle(color: Colors.black),
-                    headerTextStyle: TextStyle(color: Colors.black),
-                    selectedDayTextStyle: TextStyle(color: Colors.white),
+                    weekendTextStyle: const TextStyle(color: Colors.black),
+                    weekdayTextStyle: const TextStyle(color: Colors.black),
+                    headerTextStyle: const TextStyle(color: Colors.black),
+                    selectedDayTextStyle: const TextStyle(color: Colors.white),
                     selectedDayButtonColor: Colors.green,
                     selectedDateTime: DateTime.now(),
                     onDayPressed: (DateTime selectedDay, List<dynamic> events) {
-                      // Lógica para manejar la selección del día
                       setState(() {
                         reserva = Reserva(
                           cancha: reserva.cancha,
                           estado: reserva.estado,
                           fecha: selectedDay,
                           hora: reserva.hora,
-                          deporte: reserva.deporte,
                           usuarioId: reserva.usuarioId,
                           usuario: reserva.usuario,
                         );
                       });
-                      print(reserva.cancha);
                     },
                     showHeader: false,
-                    isScrollable: true, // Habilita el desplazamiento horizontal del calendario
-                    // weekFormat: false, // Muestra solo una semana
-                    height: 50, // Altura del calendario
-                    daysHaveCircularBorder: null, // Borde circular en los días
-                    pageScrollPhysics: BouncingScrollPhysics(), // Añade esta línea
+                    isScrollable: true,
+                    height: 50,
+                    daysHaveCircularBorder: null,
+                    pageScrollPhysics: const BouncingScrollPhysics(),
                   ),
                 ),
-                SizedBox(height: 20), // Espacio entre el calendario y los botones
+                const SizedBox(height: 20),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 18), // Espacio vertical entre las filas de botones
+                  padding: const EdgeInsets.symmetric(vertical: 18),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -145,7 +137,7 @@ class _ReservationPageState extends State<ReservationPage> {
                         children: List.generate(
                           4,
                           (index) => SizedBox(
-                            width: 150, // Ancho del botón
+                            width: 150,
                             height: 40,
                             child: ElevatedButton(
                               onPressed: () {
@@ -155,16 +147,15 @@ class _ReservationPageState extends State<ReservationPage> {
                                     estado: reserva.estado,
                                     fecha: reserva.fecha,
                                     hora: '${index + 7 + 1}:00 AM',
-                                    deporte: reserva.deporte,
                                     usuarioId: reserva.usuarioId,
                                     usuario: reserva.usuario,
                                   );
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(vertical: 10), // Ajuste del tamaño del botón
+                                padding: const EdgeInsets.symmetric(vertical: 10),
                               ),
-                              child: Text('Hora ${index + 7 + 1}: 00 AM'),
+                              child: Text('Hora ${index + 7 + 1}:00 AM'),
                             ),
                           ),
                         ),
@@ -174,7 +165,7 @@ class _ReservationPageState extends State<ReservationPage> {
                         children: List.generate(
                           4,
                           (index) => SizedBox(
-                            width: 150, // Ancho del botón
+                            width: 150,
                             height: 40,
                             child: ElevatedButton(
                               onPressed: () {
@@ -184,16 +175,15 @@ class _ReservationPageState extends State<ReservationPage> {
                                     estado: reserva.estado,
                                     fecha: reserva.fecha,
                                     hora: '${index + 10 + 5}:00 PM',
-                                    deporte: reserva.deporte,
                                     usuarioId: reserva.usuarioId,
                                     usuario: reserva.usuario,
                                   );
                                 });
                               },
                               style: ElevatedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(vertical: 10), // Ajuste del tamaño del botón
+                                padding: const EdgeInsets.symmetric(vertical: 10),
                               ),
-                              child: Text('Hora: ${index + 10 + 5}: 00 PM'),
+                              child: Text('Hora: ${index + 10 + 5}:00 PM'),
                             ),
                           ),
                         ),
@@ -201,31 +191,34 @@ class _ReservationPageState extends State<ReservationPage> {
                     ],
                   ),
                 ),
-                
-                SizedBox(height: 20), // Espacio entre los botones y el botón "Reservar"
-                ElevatedButton(
-                  onPressed: () {
-                    // Lógica para manejar el botón "Reservar" presionado
-                    addReservation(reserva);
-                    CircularProgressIndicator();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 70), // Ajuste del tamaño del botón
-                    backgroundColor: const Color(0xCA004953), // Color de fondo del botón
-                  ),
-                  child: Text(
-                    'Reservar',
-                    style: TextStyle(
-                      fontSize: 20, // Tamaño de fuente del texto
-                      color: Colors.white, // Color del texto
+                const SizedBox(height: 20),
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  width: _isReserving ? 60 : 150,
+                  height: _isReserving ? 60 : 50,
+                  child: ElevatedButton(
+                    onPressed: _isReserving ? null : _onReservePressed,
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      backgroundColor: const Color(0xCA004953),
                     ),
+                    child: _isReserving
+                        ? const CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                          )
+                        : const Text(
+                            'Reservar',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                            ),
+                          ),
                   ),
                 ),
               ],
             ),
           ),
         ],
-        
       ),
     );
   }
@@ -244,19 +237,18 @@ class CarouselPage extends StatelessWidget {
       options: CarouselOptions(
         height: 150,
         autoPlay: true,
-        autoPlayInterval: Duration(seconds: 3), // Intervalo de reproducción automática
+        autoPlayInterval: const Duration(seconds: 3),
         enableInfiniteScroll: true,
       ),
-      items: imageList.map((item) {
+      items: imageList.map((imagePath) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 5.0),
+              margin: const EdgeInsets.symmetric(horizontal: 5.0),
               decoration: BoxDecoration(
-                color: Colors.grey,
                 image: DecorationImage(
-                  image: AssetImage(item),
+                  image: AssetImage(imagePath),
                   fit: BoxFit.cover,
                 ),
               ),

@@ -9,13 +9,12 @@ class ReservationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Formatear la fecha
+
     String formattedDate = DateFormat('yyyy-MM-dd').format(reserva.fecha);
     // Formatear la hora en formato de 12 horas (AM/PM)
-    String formattedTime = DateFormat('hh:mm a').format(reserva.fecha); 
+    //String formattedTime = DateFormat('hh:mm a').format(reserva.hora as DateTime); 
 
-    return Card(
-      
+    return Card(      
       margin: const EdgeInsets.all(10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -52,7 +51,7 @@ class ReservationCard extends StatelessWidget {
               style: const TextStyle(color: Color(0xCA004953)),
             ),
             Text(
-              'Horario: $formattedTime',
+              'Horario: ${reserva.hora}',
               style: const TextStyle(color: Color(0xCA004953)),
             ),
           ],

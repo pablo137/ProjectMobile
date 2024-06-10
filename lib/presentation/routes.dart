@@ -9,22 +9,6 @@ import 'package:proyect/presentation/pages/login/login_page.dart';
 import 'package:proyect/presentation/pages/errors/error_page.dart';
 import 'package:proyect/presentation/pages/reservation/reservation_page.dart';
 
-// Definición de rutas
-Map<String, WidgetBuilder> routes = {
-  '/': (context) => const LoginPage(), //LoginPage()
-  // '/profile':(context) => const Profile(), //Profile()
-  '/wally-raquet': (context) => const WallyRaquet(),
-  '/futbol8': (context) => const Futbol8(),
-  '/canchas': (context) => const Courts(),
-  '/mis_reservas': (context) => const MyReservationPage(),
-  '/Cerrar_sesion': (context) => const LoginPage(),
-  '/reservas': (context) => const ReservationPage(canchaId: '',)//canchaName: ' '),
-
-  // '/':(context) => HomePage(),
-  // '/mis_reservas':(context) => const MisReservas(),
-};
-
-
 class NyAppRouter {
   static GoRouter returnRouter() {
     GoRouter router = GoRouter(
@@ -65,10 +49,11 @@ class NyAppRouter {
             return const MaterialPage(child: LoginPage());
           },
         ),
-         GoRoute(
-          path: '/reservas',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: ReservationPage(canchaId: '',));//canchaName: ''));//, deporteTitle: ''));
+        GoRoute(
+          path: '/reservas/:cancha',
+          builder: (context, state) {
+            final cancha = state.pathParameters['cancha']!;
+            return ReservationPage(cancha: cancha);
           },
         ),
       ],

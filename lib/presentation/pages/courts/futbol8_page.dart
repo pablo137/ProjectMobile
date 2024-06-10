@@ -18,9 +18,8 @@ class Futbol8 extends StatelessWidget {
             imagePath: 'assets/images/futbol8.png',
             text: 'Cancha #1',
             textColor: Colors.white,
-            onTap: () {
-             GoRouter.of(context)
-                  .push('/reservas', extra: 'Cancha #1');
+             onTap: () {
+              GoRouter.of(context).push(Uri.encodeFull('/reservas/1-Futbol8'));
             },
           ),
           CustomCard(
@@ -28,8 +27,7 @@ class Futbol8 extends StatelessWidget {
             text: 'Cancha #2',
             textColor: Colors.white,
             onTap: () {
-              GoRouter.of(context)
-                  .push('/reservas', extra: 'Cancha #2');
+              GoRouter.of(context).push(Uri.encodeFull('/reservas/2-Futbol8'));
             },
           ),
           CustomCard(
@@ -37,8 +35,7 @@ class Futbol8 extends StatelessWidget {
             text: 'Cancha #3',
             textColor: Colors.white,
             onTap: () {
-             GoRouter.of(context)
-                  .push('/reservas', extra: 'Cancha #3');
+              GoRouter.of(context).push(Uri.encodeFull('/reservas/3-Futbol8'));
             },
           ),
           // Aquí puedes añadir más CustomCard 
