@@ -1,46 +1,46 @@
-// class Reserva {
-//   String nombre;
-//   String estado;
+// // class Reserva {
+// //   String nombre;
+// //   String estado;
 
-//   Reserva(this.nombre, this.estado);
-// }
+// //   Reserva(this.nombre, this.estado);
+// // }
 
-// List<Reserva> reservas = [
-//   Reserva('Reserva 1', 'Confirmada'),
-//   Reserva('Reserva 2', 'Pendiente'),
-//   Reserva('Reserva 3', 'Confirmada'),
-//   Reserva('Reserva 4', 'Pendiente'),
-// ];
+// // List<Reserva> reservas = [
+// //   Reserva('Reserva 1', 'Confirmada'),
+// //   Reserva('Reserva 2', 'Pendiente'),
+// //   Reserva('Reserva 3', 'Confirmada'),
+// //   Reserva('Reserva 4', 'Pendiente'),
+// // ];
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
+// // import 'package:cloud_firestore/cloud_firestore.dart';
 
-// class Reserva {
-//   final String cancha;
-//   final String estado;
-//   final DateTime fecha;
-//   final String canchaId;
-//   final String deporte;
-//   final String usuarioId;
-//   final String usuario;
+// // class Reserva {
+// //   final String cancha;
+// //   final String estado;
+// //   final DateTime fecha;
+// //   final String canchaId;
+// //   final String deporte;
+// //   final String usuarioId;
+// //   final String usuario;
 
-//   Reserva({required this.cancha, required this.fecha, required this.estado});
+// //   Reserva({required this.cancha, required this.fecha, required this.estado});
 
-//   factory Reserva.fromMap(Map<String, dynamic> data) {
-//     return Reserva(
-//       cancha: data['Cancha'] ?? '',
-//       estado: data['Estado'] ?? '',
-//       fecha: (data['Fecha'] as Timestamp).toDate(),
-//     );
-//   }
+// //   factory Reserva.fromMap(Map<String, dynamic> data) {
+// //     return Reserva(
+// //       cancha: data['Cancha'] ?? '',
+// //       estado: data['Estado'] ?? '',
+// //       fecha: (data['Fecha'] as Timestamp).toDate(),
+// //     );
+// //   }
 
-//   Map<String, dynamic> toMap() {
-//     return {
-//       'Cancha': cancha,
-//       'Tipo': estado,
-//       'Fecha': Timestamp.fromDate(fecha),
-//     };
-//   }
-// }
+// //   Map<String, dynamic> toMap() {
+// //     return {
+// //       'Cancha': cancha,
+// //       'Tipo': estado,
+// //       'Fecha': Timestamp.fromDate(fecha),
+// //     };
+// //   }
+// // }
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -82,4 +82,21 @@ class Reserva {
       'Usuario': usuario,
     };
   }
+  Reserva copyWith({
+    String? cancha,
+    String? estado,
+    DateTime? fecha,
+    String? hora,
+    String? usuarioId,
+    String? usuario,
+  }) {
+    return Reserva(
+      cancha: cancha ?? this.cancha,
+      estado: estado ?? this.estado,
+      fecha: fecha ?? this.fecha,
+      hora: hora ?? this.hora,
+      usuarioId: usuarioId ?? this.usuarioId,
+      usuario: usuario ?? this.usuario,
+    );
+}
 }

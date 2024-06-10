@@ -46,7 +46,7 @@ class MyReservationRepository {
     // Referencia a la colección
 
     //final FirebaseFirestore _db = FirebaseFirestore.instance;
-    CollectionReference collectionReferenceReserva = _db.collection('reservas');
+    CollectionReference collectionReferenceReserva = _db.collection('reservas_ca');
 
     try {
       // Obtener documentos de la colección

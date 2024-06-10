@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:proyect/data/reservation_bloc.dart';
 import 'package:proyect/presentation/controllers/user_controller.dart';
 import 'package:proyect/presentation/pages/my_reservations/my_reservation_page.dart';
 import 'package:proyect/presentation/pages/courts/courts_page.dart';
@@ -49,11 +51,21 @@ class NyAppRouter {
             return const MaterialPage(child: LoginPage());
           },
         ),
+        // GoRoute(
+        //   path: '/reservas/:cancha',
+        //   builder: (context, state) {
+        //     final cancha = state.pathParameters['cancha']!;
+        //     return ReservationPage(cancha: cancha);
+        //   },
+        // ),
         GoRoute(
           path: '/reservas/:cancha',
           builder: (context, state) {
             final cancha = state.pathParameters['cancha']!;
-            return ReservationPage(cancha: cancha);
+            return BlocProvider(
+              create: (context) => ReservationBloc(),
+              child: ReservationPage(cancha: cancha),
+            );
           },
         ),
       ],
