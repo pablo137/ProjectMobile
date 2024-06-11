@@ -18,7 +18,7 @@ class ReservationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const SideBar(),
+      // drawer: const SideBar(),
       appBar: const TopBar(),
       body: BlocProvider(
         create: (context) => ReservationBloc(
