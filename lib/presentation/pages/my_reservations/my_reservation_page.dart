@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:proyect/domain/models/my_reservations.dart';
 import 'package:proyect/domain/my_reservations/my_reservations_page.dart';
@@ -16,6 +17,7 @@ class MyReservationPage extends StatefulWidget {
 class _MyReservationPageState extends State<MyReservationPage> {
   String filtro = 'Todas';
   late Future<List<Reserva>> _futureReservas;
+  final String userId = FirebaseAuth.instance.currentUser!.uid; // Obtener el UID del usuario actual
 
   @override
   void initState() {
@@ -29,6 +31,10 @@ class _MyReservationPageState extends State<MyReservationPage> {
     } else {
       return reservas.where((reserva) => reserva.estado == filtro).toList();
     }
+  }
+
+  List<Reserva> filtrarPorUsuario(List<Reserva> reservas) {
+    return reservas.where((reserva) => reserva.usuarioId == userId).toList();
   }
 
   @override
@@ -74,14 +80,6 @@ class _MyReservationPageState extends State<MyReservationPage> {
                   });
                 },
               ),
-              // FilterButton(
-              //   text: 'Rechazadas',
-              //   onPressed: () {
-              //     setState(() {
-              //       filtro = 'Rechazada';
-              //     });
-              //   },
-              // ),
             ],
           ),
           const SizedBox(height: 20),
@@ -98,11 +96,12 @@ class _MyReservationPageState extends State<MyReservationPage> {
                 }
 
                 List<Reserva> reservasFiltradas = filtrarReservas(snapshot.data!);
+                List<Reserva> reservasUsuarioActual = filtrarPorUsuario(reservasFiltradas);
 
                 return ListView.builder(
-                  itemCount: reservasFiltradas.length,
+                  itemCount: reservasUsuarioActual.length,
                   itemBuilder: (context, index) {
-                    return ReservationCard(reservasFiltradas[index]);
+                    return ReservationCard(reservasUsuarioActual[index]);
                   },
                 );
               },

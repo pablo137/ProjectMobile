@@ -81,26 +81,26 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () async {
-                  await UserController.signOut();
-                  if (mounted) {
-                    GoRouter.of(context).push(Uri(path: '/').toString());
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromRGBO(2, 148, 167, 1),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 55),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                ),
-                child: const Text(
-                  'Cerrar Sesión',
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
+              // ElevatedButton(
+              //   onPressed: () async {
+              //     await UserController.signOut();
+              //     if (mounted) {
+              //       GoRouter.of(context).push(Uri(path: '/').toString());
+              //     }
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: const Color.fromRGBO(2, 148, 167, 1),
+              //     padding:
+              //         const EdgeInsets.symmetric(vertical: 20, horizontal: 55),
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(40),
+              //     ),
+              //   ),
+              //   child: const Text(
+              //     'Cerrar Sesión',
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              // )
             ],
           ),
         ),
